@@ -80,5 +80,5 @@
     <view><text>￥</text><text>343</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
-  <text class="details_d2">忘了买？</text>
+  <text class="details_d2">返回首页</text>
 </view>

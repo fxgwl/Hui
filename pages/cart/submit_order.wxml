@@ -9,11 +9,11 @@
 <view class="details_a">
   <view class="local flex1">
     <text>取货人：</text>
-    <input placeholder="请输入取货人姓名"></input>
+    <input type="text" value="" bindinput ="userNameInput" maxlength="12" placeholder="请输入取货人姓名" ></input>
   </view>
   <view class="time flex1">
     <text>联系电话：</text>
-    <input placeholder="请输入取货人电话"></input>
+    <input type="number" value="" bindinput ="mobileInput" maxlength="11" placeholder="请输入取货人电话"></input>
   </view>
 </view>
 <view class="details_b">
