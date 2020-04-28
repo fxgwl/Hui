@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "tabbar": "../../tabbar/tabbar"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "取货",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

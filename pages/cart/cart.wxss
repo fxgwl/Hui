@@ -1,0 +1,111 @@
+
+.cartHeader{
+  width: 690rpx;
+  margin: 0 auto;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.chooseAll {
+  width: 110rpx;
+}
+.chooseAll image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.del{
+  color: #1074bc;
+}
+.list{
+  width: 690rpx;
+  height: 180rpx;
+  margin: 0 auto;
+  border-bottom: 2rpx solid #f7f7f7;
+}
+.list_choose {
+  width: 30rpx;
+  height: 30rpx;
+}
+.list_img{
+  width:115rpx;
+  height:115rpx;
+}
+.list_con {
+  width: 300rpx;
+  height: 90rpx;
+  display: flex;
+  flex-direction: column;
+}
+.list_name{
+  width: 300rpx;
+    font-size: 30rpx;
+    overflow: hidden;    
+    text-overflow:ellipsis;    
+    white-space: nowrap;
+}
+.list_price{
+    font-size: 30rpx;
+    margin-top: 15rpx;
+    color: #1074bc;
+    font-weight: 600;
+}
+.delprice {
+  display: inline;
+  font-size: 22rpx;
+  color: #e22f2f;
+  text-decoration: line-through;
+  margin-left: 25rpx;
+  font-weight: 500;
+}
+.delprice text {
+  color: #666;
+}
+.carts-num {
+  width: 120rpx;
+  height: 35rpx;
+}
+.carts-num image {
+  width: 35rpx;
+  height: 35rpx;
+}
+.carts-num text {
+  font-size: 32rpx;
+}
+/* 固定底部 */
+.cont_bot{
+    position: fixed;
+    left: 0;
+    bottom: 80rpx;
+    height: 90rpx;
+    line-height:90rpx;
+    background: #fff;
+    box-shadow: 0 0 10rpx rgba(125, 125, 125,.2);
+}
+.count_price{
+  font-weight: 600;
+    width: 450rpx;
+}
+.count_price text:first-child {
+  margin: 0 15rpx 0 30rpx;
+  color: #333;
+}
+.count_price text:last-child {
+  color: #1074bc;
+}
+.submit{
+    width: 300rpx;
+    font-size: 30rpx;
+    text-align: center;
+    color:#fff;
+    background-color: #0d6fb8;
+}
+.navigator-hover{
+    background: none;
+}
+ 
+/* 购物车为空 */
+.list_none{
+  padding:40rpx 0;
+  color: #999;
+  text-align: center;
+}

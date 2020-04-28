@@ -1,0 +1,146 @@
+/* pages/classify/goods_classify.wxss */
+text{
+  display: inline;
+}
+.container{
+  overflow: hidden;
+}
+.content{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 80rpx;
+  overflow: hidden;
+}
+.search{
+  width: 92%;
+  height: 68rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  background-color: #f2f5fa;
+  border-radius: 34rpx;
+}
+.search input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-image: url(https://app.tjhengrun.cn/image/search.png);
+  background-repeat: no-repeat;
+  background-position: 34rpx center;
+  background-size: 21rpx;
+  line-height: 68rpx;
+  font-size: 22rpx;
+  padding-left: 76rpx;
+}
+.main{
+  width: 100%;
+  height: calc(100% - 136rpx);
+  margin-top: 30rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+.main-left{
+  background-color: #f2f5fa;
+  width: 148rpx;
+  height: 100%;
+  overflow-y: auto;
+}
+.classify-item{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #666666;
+  text-align: center;
+}
+.classify-item-active{
+  background: #ffffff url(https://app.tjhengrun.cn/image/line1.png) no-repeat;
+  background-position: left center;
+  background-size: 7rpx 30rpx;
+  color: #333333;
+
+}
+.main-right{
+  width: 560rpx;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+.goods-list{
+  width: 100%;
+  height: 180rpx;
+  border-bottom: 2rpx #f7f7f7 solid;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-img{
+  width: 113rpx;
+  height: 113rpx;
+}
+.goods-img image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.goods-details{
+  width: 430rpx;
+  height: 113rpx;
+  padding-right: 30rpx;
+}
+.goods-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.price-no{
+  text-decoration: line-through;
+  color: red;
+  line-height: 20rpx;
+}
+.price-no text{
+  font-size: 20rpx;
+  color: #666666;
+}
+.price-yes{
+  font-size: 28rpx;
+  color: #1074bc;
+  font-weight: bold;
+  line-height: 46rpx;
+}
+.cart{
+  position: absolute;
+  bottom:34rpx;
+  right: 23rpx;
+  width: 120rpx;
+  height: 50rpx;
+  background: url(https://app.tjhengrun.cn/image/cart_select.png) no-repeat;
+  background-position: center;
+  background-size: 42rpx 38rpx;
+}
+.add2 {
+  width: 150rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 23rpx;
+  bottom: 34rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 0 20rpx
+}
+.add2 image {
+  width: 36rpx;
+  height: 36rpx;
+}

@@ -1,10 +1,11 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "tabbar": "../../tabbar/tabbar"
+  },
   "navigationBarBackgroundColor": "#1074bc",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "分类",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false
-
 }

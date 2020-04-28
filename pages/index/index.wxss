@@ -1,21 +1,92 @@
 /**index.wxss**/
-.userinfo {
+.container{
+  background: url(https://app.tjhengrun.cn/image/bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  padding-bottom: 80rpx;
+  overflow: hidden;
+}
+.img-bg{
+  display: block;
+  width: 46%;
+  height: 443rpx;
+  position: absolute;
+  top: 170rpx;
+  left: 27%;
+}
+.empower{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+.empower-con{
+  width: 100%;
+  height: 600rpx;
+  position: absolute;
+  background-color: #ffffff;
+  left: 0;
+  bottom: 0;
+  padding: 45rpx 50rpx;
+}
+.part-one{
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.part-one image{
+  width: 50rpx;
+  height: 50rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.text-one{
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-left: 16rpx;
 }
-
-.usermotto {
-  margin-top: 200px;
+.text-two{
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #333333;
+  margin-left: 40rpx;
+}
+.part-two{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 46rpx;
+}
+.part-three{
+  font-size: 30rpx;
+  color: #666666;
+  margin-top: 46rpx;
+}
+.part-four{
+  height: 86rpx;
+  margin-top: 80rpx;
+}
+.say-no{
+  float: left;
+  width: 250rpx;
+  height: 100%;
+  line-height: 86rpx;
+  border-radius: 8rpx;
+  background-color: #f2f2f2;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+}
+.say-yes{
+  float: right;
+  width: 250rpx;
+  height: 100%;
+  line-height: 86rpx;
+  border-radius: 8rpx;
+  background-color: #1074bc;
+  font-size: 32rpx;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
 }

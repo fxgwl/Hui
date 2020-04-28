@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabbar": "../../tabbar/tabbar"
+  },
+  "navigationBarTitleText": "购物车"
+}

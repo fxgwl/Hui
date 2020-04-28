@@ -1,0 +1,34 @@
+<!--pages/classify/goods_classify.wxml-->
+<view class="container">
+  <tabbar tabbar="{{tabbar}}"></tabbar>
+   <view class="content">
+      <view class="search">
+        <input type="text" placeholder="搜索商品"></input>
+      </view>
+      <view class="main">
+        <scroll-view class="main-left" scroll-y="true">
+          <view class="classify-item {{item.Id == currentId ? 'classify-item-active':''}}" id='{{item.Id}}' wx:key="id" wx:for="{{classify}}" bindtap="handleTap">{{item.name}}</view>
+        </scroll-view>
+        <scroll-view class="main-right" scroll-y="true">
+          <navigator url="goods_details">
+            <view class="goods-list">
+              <view class="goods-img"><image src="https://app.tjhengrun.cn/image/goods2.png"></image></view>
+              <view class="goods-details">
+                <view class="goods-name">锃光瓦亮大白菜 500g</view>
+                <view class="price-no"><text>超市价：</text><text>￥4.00~5.00</text></view>
+                <view class="price-yes">批发价：<text>￥2.60</text></view>
+              </view>
+              <view class="cart" wx:if="{{num == 0}}" catchtap="addCount">
+              </view>
+              <view class="add2" wx:else="">
+                <image catchtap="delCount" src="https://app.tjhengrun.cn/image/jian.png"/>
+                <text>{{num}}</text>
+                <image catchtap="addCount" src="https://app.tjhengrun.cn/image/jia.png"/>
+              </view>
+            </view>
+          </navigator>
+        </scroll-view>
+      </view>
+   </view>
+</view>
+

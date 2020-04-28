@@ -1,0 +1,29 @@
+<view class="notes_list">
+    <view class="kind_item">
+			<view class="con1 flex1">
+        <view class="con1_l">
+          <text>国画大厦</text>
+          <image src="https://app.tjhengrun.cn/image/right.png"/>
+        </view>
+        <text class="con1_r">退款中</text>
+      </view>
+      <view class="con2 flex1">
+        <view class="con2_l">
+          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+        </view>
+        <text class="con2_r">查看更多</text>
+      </view>
+      <view class="con3">
+        <view class="con3_t">
+          <view class="num"><text>共</text><text>6</text><text>件商品</text></view>
+          <view class="price"><text>合计：</text><text>￥</text><text>345</text></view>
+        </view>
+        <view class="con3_b2">
+          <text>查看订单</text>
+        </view>
+      </view>
+		</view>
+</view>

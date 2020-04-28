@@ -1,0 +1,189 @@
+/* pages/home/home.wxss */
+.localbox {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.local_img1 {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin: 0 18rpx 0 30rpx;
+  box-sizing: border-box;
+}
+.localbox text {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.local_img2{
+  width: 14rpx;
+  height: 26rpx;
+  margin-left: 16rpx;
+}
+.slides image {
+	width: 100%;
+	height: 100%;
+}
+.wx-swiper-dots.wx-swiper-dots-horizontal{
+  margin-left: 280rpx; 
+  }
+.recommend {
+  width: 100%;
+  height: 106rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.recommend image:first-child {
+  width: 46rpx;
+  height: 46rpx;
+  margin: 0 12rpx 0 30rpx;
+  box-sizing: border-box;
+}
+.recommend image:last-child {
+  width: 150rpx;
+  height: 33rpx;
+}
+.grids {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	font-size: 34rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.grids .item {
+	display: flex;
+	flex-direction: column;
+	width: 332rpx;
+	height: 367rpx;
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+  position: relative; 
+  border-radius: 10rpx;
+}
+.con {
+  padding: 24rpx 17rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 600;
+  background-color: #fbfbfb;
+}
+.con .name {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis 
+}
+.con .super {
+  font-size: 24rpx;
+  color: #e22f2f;
+  font-weight: 500;
+  text-decoration: line-through;
+  margin: 14rpx 0 4rpx 0;
+  box-sizing: border-box;
+}
+.con .super text {
+  color: #666;
+}
+.con .cheap {
+  color: #1074bc;
+}
+.grids .item image:first-child {
+	width: 100%;
+  height: 204rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.grids .item image:last-child {
+	width: 50rpx;
+	height: 50rpx;
+  position: absolute;
+  bottom: 30rpx;
+  right: 13rpx;
+}
+/* 选项卡 */
+.nav_kind {
+  padding: 0 30rpx 80rpx;
+}
+.top_nav{
+  height: 82rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-name{
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+  text-align: center;
+}
+.nav-hover{
+  font-size: 32rpx;
+  font-weight: bold; 
+  color: #1074bc;
+  background: url(https://app.tjhengrun.cn/image/bottom.png);
+  background-repeat: no-repeat;
+  background-size: 22rpx 13rpx;
+  background-position: 104rpx center;
+}
+.item_nav .kind_item {
+  height: 230rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.item_nav .kind_item .pic {
+  width: 200rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+}
+.item_nav .kind_item .pic image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.item_nav .kind_item .con {
+  height: 230rpx;
+  width: 457rpx;
+  padding: 20rpx 0;
+  background-color: #fff;
+  border-bottom: 4rpx solid #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item_nav .kind_item .add {
+  position: absolute;
+  right: 23rpx;
+  bottom: 66rpx;
+}
+.item_nav .kind_item .add image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.item_nav .kind_item .add2 {
+  width: 80rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 23rpx;
+  bottom: 66rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.item_nav .kind_item .add2 image {
+  width: 22rpx;
+  height: 22rpx;
+}

@@ -1,13 +1,19 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <image class="img-bg" src="https://app.tjhengrun.cn/image/bg_con.png"></image>
+  <view class="empower">
+    <view class="empower-con">
+      <view class="part-one">
+        <image src="https://app.tjhengrun.cn/image/logo.png"></image>
+        <text class="text-one">小区汇汇</text>
+        <text class="text-two">申请</text>
+      </view>
+      <view class="part-two">获取您的小区位置</view>
+      <view class="part-three">您的位置信息将用于根据您的位置选择最近可配送小区</view>
+      <view class="part-four">
+        <view class="say-no">拒绝</view>
+        <view class="say-yes" bindtap="bindViewTap">允许</view>
+      </view>
+    </view>
   </view>
 </view>

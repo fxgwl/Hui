@@ -1,0 +1,29 @@
+<!--pages/index/select_station.wxml-->
+<view class="container">
+  
+  <scroll-view class="station-list-box" scroll-y="true">
+    <view class="select">选择小区</view>
+    <!-- 小区列表 -->
+    <view class="station-list" bindtap="gohome">
+      <view class="station-left">
+        <image src="https://app.tjhengrun.cn/image/local2.png"></image>
+      </view>
+      <view class="station-right">
+        <view class="station-date">
+          <view class="station-name">国华大厦</view>
+          <view class="station-distance">距离0.66km</view>
+        </view>
+        <view class="station-address">天津市河西区挂甲寺街道</view>
+      </view>
+    </view>
+    <!-- 小区列表结束 -->
+
+    <!-- 申请开通 -->
+    <navigator url="apply_open">
+      <view class="apply">
+        <view>申请开通</view>
+      </view>
+    </navigator>
+    <!-- 申请开通结束 -->
+  </scroll-view>
+</view>

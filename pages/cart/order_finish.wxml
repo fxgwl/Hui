@@ -1,0 +1,74 @@
+<!--pages/cart/order_finish.wxml-->
+<view class="details_a">
+  <view class="local flex1"><text>取货点：</text><text>取货点取货点取货点取货点</text></view>
+  <view class="time flex1">
+    <text>取货时间：</text>
+    <view><text>4月10日</text><text class="time1">下午5点</text></view>
+  </view>
+</view>
+<view class="details_b">
+  <view class="con1 flex1">
+    <text>国华大厦店</text>
+    <image  src="https://app.tjhengrun.cn/image/right.png"/>
+  </view>
+  <view class="con2 {{bg}}">
+
+    <view class="con2_item flex1">
+      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
+      <view class="item2">
+        <text>油菜油菜油菜油菜</text>
+        <view class="flex1">
+          <view><text>￥</text><text>2.60</text></view>
+          <view class="del"><text>￥</text><text>8,6</text></view>
+        </view>
+      </view>
+      <view class="item3"><text>X</text><text>2</text></view>
+    </view>
+    
+    <view class="con2_item flex1">
+      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
+      <view class="item2">
+        <text>油菜油菜油菜油菜</text>
+        <view class="flex1">
+          <view><text>￥</text><text>2.60</text></view>
+          <view class="del"><text>￥</text><text>8,6</text></view>
+        </view>
+      </view>
+      <view class="item3"><text>X</text><text>2</text></view>
+    </view>
+    <view class="con2_item flex1">
+      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
+      <view class="item2">
+        <text>油菜油菜油菜油菜</text>
+        <view class="flex1">
+          <view><text>￥</text><text>2.60</text></view>
+          <view class="del"><text>￥</text><text>8,6</text></view>
+        </view>
+      </view>
+      <view class="item3"><text>X</text><text>2</text></view>
+    </view>
+
+  </view>
+  <view class="con3 flex1" bindtap="change">
+    <view><text>共</text><text>6</text><text>件</text></view>
+    <image src="https://app.tjhengrun.cn/image/bottom.png"/>
+  </view>
+</view>
+<view class="details_c">
+  <image src="https://app.tjhengrun.cn/image/num.png"/>
+  <view class="flex1">
+    <text>6</text>
+    <text>6</text>
+    <text>6</text>
+    <text>6</text>
+    <text>6</text>
+    <text>6</text>
+  </view>
+</view>
+<view class="details_d flex1">
+  <view class="details_d1 flex1">
+    <view><text>￥</text><text>343</text></view>
+    <!-- <view><text>已优惠￥</text><text>34</text></view> -->
+  </view>
+  <text class="details_d2">忘了买？</text>
+</view>

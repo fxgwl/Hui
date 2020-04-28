@@ -1,0 +1,158 @@
+page {
+  background-color: #f2f5fa;
+  color: #333;
+  font-size: 30rpx;
+}
+.apply_a {
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 20rpx 20rpx 10rpx;
+}
+.apply_a .flex1 {
+  height: 100rpx;
+  padding: 0 40rpx;
+}
+.apply_a .check {
+  font-size: 26rpx;
+  color: #666666;
+}
+.apply_a image {
+  width: 10rpx;
+  height: 17rpx;
+  margin-left: 10rpx;
+  box-sizing: border-box;
+}
+.apply_a1 {
+  border-bottom: 2rpx solid #f6f6f6;
+}
+
+.apply_b {
+  height: 280rpx;
+  background-color: #fff;
+  margin: 0 20rpx;
+  padding: 0 40rpx;
+}
+.apply_b1 {
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.apply_b1 > text {
+  display: inline-block;
+  width: 162rpx;
+}
+.apply_b2 {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20rpx;
+}
+.apply_b2 > text {
+  display: inline-block;
+  width: 170rpx;
+}
+.apply_b2 textarea {
+  width: 480rpx;
+  height: 140rpx;
+  font-size: 28rpx;
+  padding: 5rpx;
+}
+.apply_c {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #1074bc;
+  color: #fff;
+  font-size: 32rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+/* 遮罩层 */
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.5;
+}
+
+/* 弹出层 */
+.modalDlg{
+  width: 600rpx;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: #fff;
+  color: #333;
+  margin: 0 auto;
+}
+.modalDlg .title {
+  display: block;
+  height: 105rpx;
+  line-height: 105rpx;
+  font-size: 36rpx;
+  color: #333;
+  text-align: center;
+  border-bottom: 2rpx solid #e7e5e5;
+}
+.modalDlg .pick {
+  display: block;
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 36rpx;
+  background-color: #0d6fb8;
+  border-radius: 50rpx;
+  color: #fff;
+  margin: 20rpx auto 50rpx;
+  box-sizing: border-box;
+}
+.modalDlg  .con {
+  padding: 0 50rpx;
+}
+.modalDlg .con view {
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 32rpx;
+}
+.modalDlg .con .circle {
+  width: 30rpx;
+  height: 30rpx;
+  background: url(https://app.tjhengrun.cn/image/cart_none.png); 
+  background-size: 30rpx 30rpx;
+  background-repeat: no-repeat;
+}
+.modalDlg .con .nav-hover {
+  width: 30rpx;
+  height: 30rpx;
+  background: url(https://app.tjhengrun.cn/image/cart_yes.png); 
+  background-size: 30rpx 30rpx;
+  background-repeat: no-repeat;
+}
+
+/* 弹出层里面的按钮 */
+.modalDlg image:last-child {
+  width: 42rpx;
+  height: 42rpx;
+  position: absolute;
+  right: 32rpx;
+  top: 32rpx;
+}

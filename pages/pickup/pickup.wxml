@@ -1,0 +1,30 @@
+<!--pages/pickup/pickup.wxml-->
+<tabbar tabbar="{{tabbar}}"></tabbar>
+<view class="container">
+  <scroll-view class="pickup-box" scroll-y="true">
+    <view class="pickup-first"></view>
+    <view class="pickup-list">
+      <view class="pickup-number-list">
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+      </view>
+      <view class="pickup-tips-list">注：妥善保管，以防他人冒领</view>
+    </view>
+    <view class="pickup-list">
+      <view class="pickup-number-list">
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+        <view>6</view>
+      </view>
+      <view class="pickup-tips-list">注：妥善保管，以防他人冒领</view>
+    </view>
+  </scroll-view>
+</view>
+

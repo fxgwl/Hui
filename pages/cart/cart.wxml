@@ -1,0 +1,48 @@
+<view class="pages">
+  <tabbar tabbar="{{tabbar}}"></tabbar>
+  <view wx:if="{{hasList}}">
+      <view class='cartHeader flex1'>
+        <view class='chooseAll flex1'>
+            <!-- 全选ICON -->
+            <image wx:if="{{selectAllStatus}}" bindtap="selectAll"  src="https://app.tjhengrun.cn/image/cart_yes.png"/>
+            <!-- else -->
+            <image wx:else bindtap="selectAll"  src="https://app.tjhengrun.cn/image/cart_none.png"/>
+            <text>全选</text>
+        </view>
+        <view class='del' bindtap='deletes'><text>删除</text></view>
+      </view>
+      <!-- 列表 -->
+      <view class="list flex1" wx:for="{{list}}" wx:key="{{index}}">
+      
+        <!-- radio选择IOCN -->
+        <image class="list_choose" wx:if="{{item.selected}}" data-index="{{index}}" bindtap="selectList" src="https://app.tjhengrun.cn/image/cart_yes.png"/>
+        <image class="list_choose" wx:else type="circle" data-index="{{index}}" bindtap="selectList" src="https://app.tjhengrun.cn/image/cart_none.png"/>
+        
+        <!-- 列表商品图片 -->
+        <image class="list_img" src="{{item.image}}"></image>
+        <!-- 列表标题  价格 -->
+        <view class="list_con">
+          <text class="list_name">{{item.title}}</text>
+          <view class="list_price">
+            <text>￥{{item.price}}</text>
+            <view class="delprice"><text>￥{{item.price}}</text></view>
+          </view>
+        </view>
+        
+        <!-- 商品数量加减 -->
+        <view class="carts-num flex1" style='display:{{show_edit}}'>
+          <image bindtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" src="https://app.tjhengrun.cn/image/jian.png"/>
+					<text bindinput='input_num' data-index="{{index}}">{{item.num}}</text>
+					<image bindtap="btn_add" data-index="{{index}}" src="https://app.tjhengrun.cn/image/jia.png"/>
+        </view>
+      </view>    
+  </view>  
+  <view wx:else>
+    <view class="list_none">购物车是空的哦~</view>
+  </view>
+</view> 
+<!-- 固定底部 -->
+<view class="cont_bot flex1">    
+    <view class="count_price"><text>合计：</text><text>￥{{totalPrice}}</text></view>
+    <label class='submit' bindtap='btn_submit_order'>去结算（1）</label>
+</view>

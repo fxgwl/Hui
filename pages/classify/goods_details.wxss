@@ -1,0 +1,140 @@
+/* pages/classify/goods_details.wxss */
+.main{
+  background-color: #f6f6f4;
+  padding-bottom: 98rpx;
+}
+/*轮播图*/
+.swiper{
+  width: 100%;
+  height: 648rpx;
+}
+.slide-image {
+  width: 100%;
+  height: 648rpx;
+}
+.content{
+  width: 96%;
+  min-height: 320rpx;
+  margin: 20rpx auto 0;
+  background-color: #ffffff;
+  padding: 40rpx 30rpx;
+}
+.goods-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.goods-state{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.state{
+  width: 80%;
+  font-size: 24rpx;
+  color: #666666;
+}
+.share{
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #1074bc;
+  font-size: 26rpx;
+  color: #ffffff;
+  padding: 10rpx;
+  line-height: 30rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  margin-left: 30rpx;
+}
+.goods-price{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.price{
+  width: 50%;
+}
+.price-no{
+  text-decoration: line-through;
+  color: red;
+  line-height: 20rpx;
+}
+.price-no text{
+  font-size: 20rpx;
+  color: #666666;
+}
+.price-yes{
+  font-size: 28rpx;
+  color: #1074bc;
+  font-weight: bold;
+  line-height: 46rpx;
+}
+.goods-sold{
+  font-size: 22rpx;
+  color: #333333;
+  text-align: right;
+  width: 50%;
+  padding-top: 30rpx;
+}
+.goods-tag{
+  width: 96%;
+  height: 100rpx;
+  margin: 0 auto 20rpx;
+  background-color: #ffffff;
+  border-top: 2rpx #f8f8f6 solid;
+  display: flex;
+  flex-direction: row;
+  padding: 0 20rpx;
+}
+.goods-tag view{
+  width: 25%;
+  height: 100%;
+  line-height: 98rpx;
+  background: url(https://app.tjhengrun.cn/image/safe.png) no-repeat;
+  background-size: 24rpx 26rpx;
+  background-position: 24rpx center;
+  font-size: 24rpx;
+  color: #333333;
+  padding-left: 50rpx;
+}
+.bottom-box{
+  width: 100%;
+  height: 98rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.cart{
+  width: 170rpx;
+  height: 100%;
+  background: #ffffff url(https://app.tjhengrun.cn/image/cart_select.png) no-repeat;
+  background-position: center;
+  background-size: 48rpx 42rpx;
+  position: relative;
+}
+.corner-marker{
+  position: absolute;
+  top: 10rpx;
+  left: 95rpx;
+  width: auto;
+  height: 32rpx;
+  background-color: #f53131;
+  font-size: 24rpx;
+  color: #ffffff;
+  line-height: 32rpx;
+  text-align: center;
+  padding: 0 8rpx;
+  border-radius: 16rpx;
+}
+.add-cart{
+  width: 580rpx;
+  height: 100%;
+  background-color: #1074bc;
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ffffff;
+}

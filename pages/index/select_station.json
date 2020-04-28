@@ -2,9 +2,8 @@
   "usingComponents": {},
   "navigationBarBackgroundColor": "#1074bc",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "选择小区",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false
-
 }

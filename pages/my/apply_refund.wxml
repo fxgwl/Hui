@@ -1,0 +1,45 @@
+<view class="apply_a">
+  <view class="apply_a1 flex1" bindtap="btn">
+    <text>退款原因：</text>
+    <view class="check"><text>{{nowText}}</text><image src="https://app.tjhengrun.cn/image/right.png"/></view>
+  </view>
+  <view class="apply_a2 flex1" bindtap="btnS">
+    <text>货物状态：</text>
+    <view class="check"><text>{{nowTextS}}</text><image src="https://app.tjhengrun.cn/image/right.png"/></view>
+  </view>
+</view>
+
+<view class="apply_b">
+  <view class="apply_b1">
+    <text class="price">退款金额：</text>
+    <view><text>￥</text><text>343</text></view>
+  </view>
+  <view class="apply_b2">
+    <text class="price">退款说明：</text>
+    <textarea maxlength='60' placeholder="请输入..." placeholder-style="font-size: 26rpx;"></textarea>
+  </view>
+</view>
+<view class="apply_c"><text>提交申请</text></view>
+
+<!-- 退款原因 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="toggleDialog"></view>
+<!-- 退款原因 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+  <text class="title">退款原因</text>
+  <view class="con">
+    <view wx:for="{{arrays}}" data-index="{{index}}" wx:key="index"  bindtap='setText'><text>{{item.con}}</text><view class="circle {{item.typeId == currentId ? 'nav-hover':''}}"></view></view>
+  </view>
+  <text class="pick" bindtap="pick">提交</text>
+  <image bindtap="ok" class="ok" src="https://app.tjhengrun.cn/image/close.png"/>
+</view>
+
+<!-- 货物状态 -->
+<view class="mask" catchtouchmove="preventTouchMoveS" wx:if="{{showModalS}}" bindtap="toggleDialogS"></view>
+<view class="modalDlg" wx:if="{{showModalS}}">
+  <text class="title">货物状态</text>
+  <view class="con">
+    <view wx:for="{{Arrays}}" data-index="{{index}}" wx:key="index"  bindtap='setTextS'><text>{{item.con}}</text><view class="circle {{item.typeId == currentIdS ? 'nav-hover':''}}"></view></view>
+  </view>
+  <text class="pick" bindtap="pickS">提交</text>
+  <image bindtap="okS" class="ok" src="https://app.tjhengrun.cn/image/close.png"/>
+</view>
