@@ -117,7 +117,7 @@ Page({
     })
     if (this.data.hasUserInfo == true) {
       wx.navigateTo({
-        url: '../login/login_tell'
+        url: '../index/index'
       })
     }
   }
