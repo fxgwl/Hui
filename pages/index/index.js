@@ -32,8 +32,8 @@ Page({
                 console.info("1授权失败返回数据");
 
               } else if (res.confirm) {
-                wx.navigateTo({
-                  url: '../my/setting',
+                wx.switchTab({
+                  url: '/pages/home/home',
                 })
               }
             }

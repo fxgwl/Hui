@@ -30,6 +30,10 @@ page {
   margin-left: 10rpx;
   box-sizing: border-box;
 }
+.details_a .flex1 input{
+  font-weight: 500;
+  text-align: right;
+}
 .details_b {
   height: auto;
   background-color: #fff;
