@@ -8,11 +8,11 @@ Page({
   },
   
   onLoad: function () {
-    setTimeout(function () {
-      wx.switchTab({
-        url: '/pages/home/home',
-      })
-    }, 1000);
+    // setTimeout(function () {
+    //   wx.switchTab({
+    //     url: '/pages/home/home',
+    //   })
+    // }, 1000);
   },
   onReady: function () {
     

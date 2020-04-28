@@ -1,7 +1,7 @@
 {
   "pages": [
+    "pages/login/warrant",
     "pages/index/index",
-    
     "pages/home/home",
     "pages/index/select_station",
     "pages/index/apply_open",

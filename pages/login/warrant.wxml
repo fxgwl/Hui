@@ -1,0 +1,10 @@
+<view class="container">
+  <view class='wa_one' style="background-image: url(http://wx.gangmaijiaw.com/steel/imgs/wa_one_bg.png)">
+    <text>钢买家小程序</text>
+  </view>
+  <view class='wa_two'>
+    即将登陆钢买家小程序，请确认是本人操作
+    <text>· 获得你的公开信息（昵称、头像等）</text>
+  </view>
+  <button class='wa_btn'open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权并登录</button>
+</view>
