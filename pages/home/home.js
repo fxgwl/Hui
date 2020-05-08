@@ -10,36 +10,41 @@ Page({
     tabbar: {},
     slides: [],
     cate: [],
-    currentId: '1',
-    section: [{
-      name: '蔬菜',
-      typeId: '1',
-      goods: '蔬菜'
-    }, {
-      name: '水果',
-      typeId: '2',
-      goods: '水果'
-    }, {
-      name: '肉禽',
-      typeId: '3',
-      goods: '肉禽'
-    }, {
-      name: '主食',
-      typeId: '4',
-      goods: '主食'
-    }, {
-      name: '其他',
-      typeId: '5',
-      goods: '蔬菜'
-    }],
+    currentId: '',
+    classGoods:[],
+    section:[]
+    // section: [{
+    //   name: '蔬菜',
+    //   typeId: '1',
+    //   goods: '蔬菜'
+    // }, {
+    //   name: '水果',
+    //   typeId: '2',
+    //   goods: '水果'
+    // }, {
+    //   name: '肉禽',
+    //   typeId: '3',
+    //   goods: '肉禽'
+    // }, {
+    //   name: '主食',
+    //   typeId: '4',
+    //   goods: '主食'
+    // }, {
+    //   name: '其他',
+    //   typeId: '5',
+    //   goods: '蔬菜'
+    // }],
+
   },
   //点击每个导航的点击事件
   handleTap: function (e) {
     let id = e.currentTarget.id;
     if (id) {
       this.setData({
-        currentId: id
+        currentId: id,
+        classGoods:[]
       })
+      this.getGoods();
     }
   },
   /**
@@ -52,6 +57,7 @@ Page({
     //this.setData({ slides:res.data })
     // }
     // })
+    this.getClass();//获取商品品类
     app.editTabbar();
   },
 
@@ -102,5 +108,38 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getClass:function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl +"app/get_category",
+      success:function(res){
+        console.log(res);
+        if(res.data.code==1){
+          that.setData({
+            section: res.data.data.list,
+            currentId: res.data.data.list[0].gclassId
+          })
+          that.getGoods();
+        }
+      }
+    })
+  },
+  getGoods: function (id) {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/get_product",
+      data:{
+        category:this.data.currentId,
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data.code == 1) {
+          that.setData({
+            classGoods:res.data.data.list
+          })
+        }
+      }
+    })
   }
 })
