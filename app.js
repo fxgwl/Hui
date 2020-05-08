@@ -10,39 +10,40 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           console.log('code=' + res.code)
-          // wx.request({
-          //   url: 'https://wx.gangmaijiaw.com/steel/SendCode.do',
-          //   data: {
-          //     code: res.code
-          //   },
-          //   success: function (res) {
-          //     console.log(res.data),
-          //       wx.setStorageSync('openid', res.data),
-          //       console.log('openid=' + res.data.openid)
-          //     if (res.data.statusCode == "500") {
-          //       wx.showModal({
-          //         title: '提示',
-          //         content: '微信登陆失败，请关闭后重新登陆！',
-          //       })
-          //     } else {
-          //       wx.request({
-          //         url: 'https://wx.gangmaijiaw.com/steel/SelectByOpenId.do',
-          //         data: {
-          //           openId: wx.getStorageSync('openid').openid,
-          //         },
-          //         success: function (res) {
-          //           console.log(res)
-          //           wx.setStorageSync('s_userinfo', res.data.s_userinfo)
-          //           if (wx.getStorageSync('s_userinfo').use_id) {
-          //             wx.reLaunch({
-          //               url: '../index/index'
-          //             })
-          //           }
-          //         },
-          //       })
-          //     }
-          //   }
-          // })
+          wx.request({
+            url: 'https://hui.lyhuiqiao.com/app/getopenid',
+            data: {
+              code: res.code
+            },
+            success: function (res) {
+              console.log(res.data.data.openid),
+                wx.setStorageSync('openid', res.data.data.openid),
+                console.log('openid=' + res.data.data.openid)
+              if (res.data.code != "1") {
+                wx.showModal({
+                  title: '提示',
+                  content: '微信登陆失败，请关闭后重新登陆！',
+                })
+              } 
+              // else {
+              //   wx.request({
+              //     url: 'https://hui.lyhuiqiao.com/app/wechatLogin',
+              //     data: {
+              //       wechatUid: wx.getStorageSync('openid').openid,
+              //     },
+              //     success: function (res) {
+              //       console.log(res)
+              //       wx.setStorageSync('s_userinfo', res.data.s_userinfo)
+              //       if (wx.getStorageSync('s_userinfo').use_id) {
+              //         wx.reLaunch({
+              //           url: '../index/index'
+              //         })
+              //       }
+              //     },
+              //   })
+              // }
+            }
+          })
         } else {
           console.log('获取用户登陆信息失败！' + res.errMsg)
         }
@@ -99,6 +100,7 @@ App({
   globalData: {
     systemInfo: null,//客户端设备信息
     userInfo: null,
+    hostUrl:"https://hui.lyhuiqiao.com/",
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#999999",

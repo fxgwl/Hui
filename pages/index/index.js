@@ -13,7 +13,35 @@ Page({
     //     url: '/pages/home/home',
     //   })
     // }, 1000);
-    this.pushMsg();
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+        var wechatNick = encodeURI('小晓');
+        var wechatHeadPic = encodeURI(app.globalData.userInfo.avatarUrl);
+        console.log(wechatNick);
+        wx.request({
+          url: 'https://hui.lyhuiqiao.com/app/wechatLogin',
+          data: {
+            wechatUid: wx.getStorageSync('openid'),
+            wechatNick: wechatNick,
+            wechatHeadPic: wechatHeadPic},
+          success:function(res){
+            console.log(res);
+            wx.setStorageSync("memberId", res.data.data.memberId);
+          }
+        })
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/home/home',
+          })
+        }, 1000);
+      }
+    })
+    //this.pushMsg();
   },
   onReady: function () {
     
