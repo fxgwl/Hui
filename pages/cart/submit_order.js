@@ -21,6 +21,7 @@ Page({
     })
   },
   change: function () {
+    
     this.setData({
       bg: "bg2"
     })
