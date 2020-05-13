@@ -178,6 +178,13 @@ Page({
   },
   addCar: function (event) {
     var that = this;
+    if(wx.getStorageSync("myAddress").address_id==undefined){
+      wx.showToast({
+        title: '请先选择小区',
+        icon:"none"
+      })
+      return;
+    }
     var gnormsId = event.currentTarget.dataset.id;
     wx.request({
       url: app.globalData.hostUrl + "app/addCart",

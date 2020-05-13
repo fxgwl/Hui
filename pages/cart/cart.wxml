@@ -44,5 +44,5 @@
 <!-- 固定底部 -->
 <view class="cont_bot flex1">    
     <view class="count_price"><text>合计：</text><text>￥{{totalPrice}}</text></view>
-    <label class='submit' bindtap='btn_submit_order'>去结算（1）</label>
+    <label class='submit' bindtap='btn_submit_order'>去结算</label>
 </view>

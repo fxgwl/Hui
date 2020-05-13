@@ -58,6 +58,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-  }
+    goPage: function (event) {
+      var url = event.currentTarget.dataset.id;
+      if (url !="/pages/home/home"){
+        if(wx.getStorageSync('myAddress').address_id==undefined){
+          wx.showToast({
+            title: '请先选择小区',
+            icon:'none'
+          })
+          return;
+        }
+      }
+      wx.switchTab({
+        url: url,
+      })
+    }
+  },
 })

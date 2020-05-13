@@ -3,7 +3,7 @@
   <view class="local flex1"><text>取货点：</text><text>{{order.harlan_member_taddress.address_detail}}</text></view>
   <view class="time flex1">
     <text>取货时间：</text>
-    <view><text>4月10日</text><text class="time1">下午5点</text></view>
+    <view><text>{{pickupTime}}</text><text class="time1">下午5点</text></view>
   </view>
 </view>
 <view class="details_a">
@@ -18,49 +18,24 @@
 </view>
 <view class="details_b">
   <view class="con1 flex1">
-    <text>国华大厦店</text>
+    <text>{{order.harlan_member_taddress.address_detail}}</text>
     <image  src="https://app.tjhengrun.cn/image/right.png"/>
   </view>
-  <view class="con2 {{bg}}">
-
-    <view class="con2_item flex1">
-      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
+  <view>
+    <view class="con2_item flex1" wx:for="{{goodList}}" wx:key="id">
+      <image class="item1" src="{{item.harlan_gnorms.goodsPic}}"/>
       <view class="item2">
-        <text>油菜油菜油菜油菜</text>
+        <text>{{item.harlan_gnorms.harlan_goods.goodsName}}</text>
         <view class="flex1">
-          <view><text>￥</text><text>2.60</text></view>
-          <view class="del"><text>￥</text><text>8,6</text></view>
+          <view><text>￥</text><text>{{item.harlan_gnorms.goodsMallprice}}</text></view>
+          <view class="del"><text>￥</text><text>{{item.harlan_gnorms.goodsMarketprice}}</text></view>
         </view>
       </view>
-      <view class="item3"><text>X</text><text>2</text></view>
+      <view class="item3"><text>X</text><text>{{item.gnormsNum}}</text></view>
     </view>
-    
-    <view class="con2_item flex1">
-      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
-      <view class="item2">
-        <text>油菜油菜油菜油菜</text>
-        <view class="flex1">
-          <view><text>￥</text><text>2.60</text></view>
-          <view class="del"><text>￥</text><text>8,6</text></view>
-        </view>
-      </view>
-      <view class="item3"><text>X</text><text>2</text></view>
-    </view>
-    <view class="con2_item flex1">
-      <image class="item1" src="https://app.tjhengrun.cn/image/goods1.png"/>
-      <view class="item2">
-        <text>油菜油菜油菜油菜</text>
-        <view class="flex1">
-          <view><text>￥</text><text>2.60</text></view>
-          <view class="del"><text>￥</text><text>8,6</text></view>
-        </view>
-      </view>
-      <view class="item3"><text>X</text><text>2</text></view>
-    </view>
-
   </view>
   <view class="con3 flex1" bindtap="change">
-    <view><text>共</text><text>6</text><text>件</text></view>
+    <view><text>共</text><text>{{goodList.length}}</text><text>种</text></view>
     <image src="https://app.tjhengrun.cn/image/bottom.png"/>
   </view>
 </view>
@@ -75,5 +50,5 @@
     <view><text>￥</text><text>{{order.sporderPrice}}</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
-  <text class="details_d2">返回首页</text>
+  <text class="details_d2" bindtap="goHome">返回首页</text>
 </view>

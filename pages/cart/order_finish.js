@@ -7,22 +7,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bg: "bg1",
-    orderId:"16",
+    bg: true,
+    orderId:"",
+    pickupTime:'',
+    goodList:[],
+    list1:[],
+    list2:[],
     order:{}
   },
   change: function () {
-    this.setData({
-      bg: "bg2"
-    })
+    if (this.data.bg) {
+      this.setData({
+        goodList: this.data.list2,
+        bg: false
+      })
+    } else {
+      this.setData({
+        goodList: this.data.list1,
+        bg: true
+      })
+    }
   }, 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   orderId:options.orderId
-    // })
+    this.setData({
+      orderId:options.orderId
+    })
     if (app.globalData.conIsCan) {
       console.log("order_finish.js>>orderId==", this.data.orderId)
     }
@@ -93,11 +105,42 @@ Page({
           if (app.globalData.conIsCan) {
             console.log("order_finish.js>>orderDetail==", res)
           }
+          if (res.data.data.harlan_sporder_gnorms.length>2){
+            that.data.list1.push(res.data.data.harlan_sporder_gnorms[0]);
+            that.data.list1.push(res.data.data.harlan_sporder_gnorms[1]);
+            that.data.goodList.push(res.data.data.harlan_sporder_gnorms[0]);
+            that.data.goodList.push(res.data.data.harlan_sporder_gnorms[1]);
+          }else{
+            that.data.list1 = res.data.data.harlan_sporder_gnorms,
+            that.data.goodList = res.data.data.harlan_sporder_gnorms
+          }
           that.setData({
-            order:res.data.data
+            order:res.data.data,
+            goodList: that.data.goodList,
+            list1:that.data.list1,
+            list2: res.data.data.harlan_sporder_gnorms
           })
+          that.getPickupTime(that.data.order.sporderTime);
         }
       }
     })
   },
+  getPickupTime : function(orderTime){
+    var that = this;
+    var time1=new Date(orderTime*1000);
+    if(time1.getHours()>=11){
+      that.setData({
+        pickupTime: (time1.getMonth() + 1) + "月" + (time1.getDate()+1)+"日",
+      })
+    }else{
+      that.setData({
+        pickupTime: (time1.getMonth() + 1) + "月" + time1.getDate() + "日",
+      })
+    }
+  },
+  goHome : function(){
+    wx.switchTab({
+      url: '../home/home',
+    })
+  }
 })

@@ -4,120 +4,42 @@
 			{{item.name}}
 	</view>
 </view>
-<view class="item_nav"  wx:for="{{section}}" wx:key="id">
-	<view hidden='{{currentId!=item.typeId}}'> 
+<view class="item_nav">
+	<view> 
     <!-- 代付款 -->
-		<view class="kind_item">
+		<view class="kind_item" wx:for="{{orderList}}" wx:key="id">
 			<view class="con1 flex1">
         <view class="con1_l">
-          <text>国画大厦</text>
+          <text>{{item.harlan_member_taddress.address_detail}}</text>
           <image src="https://app.tjhengrun.cn/image/right.png"/>
         </view>
-        <text class="con1_r1">代付款</text>
+        <text class="con1_r1" wx:if="{{item.sporderStatus==0}}">待付款</text>
+        <text class="con1_r23" wx:elif="{{item.sporderStatus==1}}">待自提</text>
+        <text class="con1_r23" wx:elif="{{item.sporderStatus==3}}">已完成</text>
+        <text class="con1_r4" wx:elif="{{item.sporderStatus==4}}">已取消</text>
       </view>
       <view class="con2 flex1">
         <view class="con2_l">
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+          <view class="kind" wx:for="{{item.harlan_sporder_gnorms}}" wx:for-item="goodsItem"><image src="{{goodsItem.harlan_gnorms.goodsPic}}"/><text class="number">{{goodsItem.gnormsNum}}</text></view>
         </view>
-        <navigator url="../my/order_details" class="con2_r"><text>查看更多</text></navigator>
+        <navigator url="../my/order_details?orderId={{item.sporderId}}" class="con2_r"><text>查看更多</text></navigator>
       </view>
       <view class="con3">
         <view class="con3_t">
-          <view class="num"><text>共</text><text>6</text><text>件商品</text></view>
-          <view class="price"><text>合计：</text><text>￥</text><text>345</text></view>
+          <view class="num"><text>共</text><text>{{item.harlan_sporder_gnorms.length}}</text><text>种商品</text></view>
+          <view class="price"><text>合计：</text><text>￥</text><text>{{item.sporderPrice}}</text></view>
         </view>
-        <view class="con3_b1"><text>去支付</text><text>15:00</text></view>
-      </view>
-		</view>
-    <!-- 待自提 -->
-    <view class="kind_item">
-			<view class="con1 flex1">
-        <view class="con1_l">
-          <text>国画大厦</text>
-          <image src="https://app.tjhengrun.cn/image/right.png"/>
-        </view>
-        <text class="con1_r23">待自提</text>
-      </view>
-      <view class="con2 flex1">
-        <view class="con2_l">
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-        </view>
-        <navigator url="../my/order_details" class="con2_r"><text>查看更多</text></navigator>
-      </view>
-      <view class="con3">
-        <view class="con3_t">
-          <view class="num"><text>共</text><text>6</text><text>件商品</text></view>
-          <view class="price"><text>合计：</text><text>￥</text><text>345</text></view>
-        </view>
-        <view class="con3_b2">
-          <navigator url="../my/apply_refund"><text class="apply">申请退款</text></navigator>
+        <view class="con3_b2" wx:if="{{item.sporderStatus==0}}">
+          <text class="apply">取消订单</text>
+          <text bindtap="gotoPay" data-id="{{item.sporderId}}">去支付</text></view>
+        <view class="con3_b2" wx:elif="{{item.sporderStatus==1}}">
+          <!-- <navigator url="../my/apply_refund"><text class="apply">申请退款</text></navigator> -->
           <text>确认收货</text>
         </view>
-      </view>
-		</view>
-    <!-- 已完成 -->
-    <view class="kind_item">
-			<view class="con1 flex1">
-        <view class="con1_l">
-          <text>国画大厦</text>
-          <image src="https://app.tjhengrun.cn/image/right.png"/>
-        </view>
-        <text class="con1_r23">已完成</text>
-      </view>
-      <view class="con2 flex1">
-        <view class="con2_l">
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-        </view>
-        <navigator url="../my/order_details" class="con2_r"><text>查看更多</text></navigator>
-      </view>
-      <view class="con3">
-        <view class="con3_t">
-          <view class="num"><text>共</text><text>6</text><text>件商品</text></view>
-          <view class="price"><text>合计：</text><text>￥</text><text>345</text></view>
-        </view>
-        <view class="con3_b2">
+        <view class="con3_b2" wx:elif="{{item.sporderStatus==3 || item.sporderStatus==4}}">
           <text>查看订单</text>
         </view>
       </view>
 		</view>
-    <!-- 已取消 -->
-    <view class="kind_item">
-			<view class="con1 flex1">
-        <view class="con1_l">
-          <text>国画大厦</text>
-          <image src="https://app.tjhengrun.cn/image/right.png"/>
-        </view>
-        <text class="con1_r4">已取消</text>
-      </view>
-      <view class="con2 flex1">
-        <view class="con2_l">
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-        </view>
-        <navigator url="../my/order_details" class="con2_r"><text>查看更多</text></navigator>
-      </view>
-      <view class="con3">
-        <view class="con3_t">
-          <view class="num"><text>共</text><text>6</text><text>件商品</text></view>
-          <view class="price"><text>合计：</text><text>￥</text><text>345</text></view>
-        </view>
-        <view class="con3_b2">
-          <text>查看订单</text>
-        </view>
-      </view>
-		</view>
-
-
 	</view>
 </view>

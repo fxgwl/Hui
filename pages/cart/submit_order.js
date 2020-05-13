@@ -293,7 +293,7 @@ Page({
         duration: 1500
       });
     }
-    wx.navigateTo({
+    wx.redirectTo({
       url: 'order_finish?orderId='+orderId,
     });
   },

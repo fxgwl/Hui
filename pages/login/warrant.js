@@ -15,6 +15,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    if (wx.getStorageSync('openid')) {
+      wx.navigateTo({
+        url: '../index/index'
+      })
+      
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -41,7 +47,6 @@ Page({
         }
       })
     }
-    // if (wx.getStorageSync('openid').openid) {
     //   wx.request({
     //     url: 'https://wx.gangmaijiaw.com/steel/SelectByOpenId.do',
     //     data: {
@@ -57,7 +62,7 @@ Page({
     //       }
     //     },
     //   })
-    // }
+     }
   },
 
   /**
