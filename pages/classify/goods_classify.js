@@ -8,22 +8,22 @@ Page({
    */
   data: {
     tabbar: {},
-    currentId: '1',
+    currentId: '',
     num: 0,
-    classify: [
-      { name: "蔬菜水果", Id: '1'},
-      { name: "蔬菜水果", Id: '2'},
-      { name: "蔬菜水果", Id: '3'},
-      { name: "蔬菜水果", Id: '4'}
-    ]
+    classify: [],
+    classGoods: [],
+    section: [],
+    myCar: [],
   },
   //点击每个导航的点击事件
   handleTap: function (e) {
-    let id = e.currentTarget.id;
+    let id = e.currentTarget.dataset.id;
     if (id) {
       this.setData({
-        currentId: id
+        currentId: id,
+        classGoods: []
       })
+      this.getGoods();
     }
   },
   // 加入购物车
@@ -33,32 +33,6 @@ Page({
     that.setData({
       "num" :1,
     }) 
-  },
-  // 商品数量加
-  addCount: function (e) {
-    console.log("刚刚您点击了加1");
-    var num = this.data.num;
-    // 总数量-1  
-    if (num < 1000) {
-      this.data.num++;
-    }
-    // 将数值与状态写回  
-    this.setData({
-      num: this.data.num
-    });
-  },
-  // 商品数量减
-  delCount: function (e) {
-    console.log("刚刚您点击了减1");
-    var num = this.data.num;
-    // 商品总数量-1
-    if (num > 0) {
-      this.data.num--;
-    }
-    // 将数值与状态写回  
-    this.setData({
-      num: this.data.num
-    });
   },
 
   /**
@@ -80,7 +54,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getClass();
   },
 
   /**
@@ -116,5 +90,126 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  getClass: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/get_category",
+      success: function (res) {
+        console.log(res);
+        if (res.data.code == 1) {
+          that.setData({
+            section: res.data.data.list,
+            currentId: res.data.data.list[0].gclassId
+          })
+          that.getGoods();
+        }
+      }
+    })
+  },
+  getGoods: function (id) {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/get_product",
+      data: {
+        category: this.data.currentId,
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data.code == 1) {
+          that.setData({
+            classGoods: res.data.data.list
+          })
+        }
+        that.getCar();
+      }
+    })
+  },
+  getCar: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/cart_info",
+      data: {
+        memberId: wx.getStorageSync("memberId"),
+      },
+      success: function (res) {
+        console.log("mycar", res);
+        if (res.data.code == 1) {
+          that.setData({
+            myCar: res.data.data.list
+          })
+          for (var i = 0; i < that.data.myCar.length; i++) {
+            for (var j = 0; j < that.data.classGoods.length; j++) {
+              if (that.data.classGoods[j].gnormsId == that.data.myCar[i].gnormsId) {
+                that.data.classGoods[j].car = that.data.myCar[i];
+              }
+            }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("goods==", that.data.classGoods)
+        }
+      }
+    })
+  },
+  addCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum: "1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for (var i = 0; i < that.data.classGoods.length; i++) {
+            if (gnormsId == that.data.classGoods[i].gnormsId) {
+              if (that.data.classGoods[i].car == undefined) {
+                var car = {};
+                car.gnormsNum = 1;
+                that.data.classGoods[i].car = car;
+              } else {
+                that.data.classGoods[i].car.gnormsNum++;
+              }
+            }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("加入成功");
+        }
+      }
+    })
+  },
+  delCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum: "-1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for (var i = 0; i < that.data.classGoods.length; i++) {
+            if (gnormsId == that.data.classGoods[i].gnormsId) {
+              if (that.data.classGoods[i].car == undefined) {
+              } else {
+                that.data.classGoods[i].car.gnormsNum--;
+              }
+            }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("加入成功");
+        }
+      }
+    })
+  },
 })

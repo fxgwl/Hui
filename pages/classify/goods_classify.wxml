@@ -7,23 +7,23 @@
       </view>
       <view class="main">
         <scroll-view class="main-left" scroll-y="true">
-          <view class="classify-item {{item.Id == currentId ? 'classify-item-active':''}}" id='{{item.Id}}' wx:key="id" wx:for="{{classify}}" bindtap="handleTap">{{item.name}}</view>
+          <view class="classify-item {{item.gclassId == currentId ? 'classify-item-active':''}}" data-id='{{item.gclassId}}' wx:key="id" wx:for="{{section}}" bindtap="handleTap">{{item.gclassName}}</view>
         </scroll-view>
         <scroll-view class="main-right" scroll-y="true">
-          <navigator url="goods_details">
+          <navigator url="goods_details?gnormsId={{item.gnormsId}}" wx:for="{{classGoods}}" wx:key="id">
             <view class="goods-list">
-              <view class="goods-img"><image src="https://app.tjhengrun.cn/image/goods2.png"></image></view>
+              <view class="goods-img"><image src="{{item.harlan_gnorms.goodsPic}}"></image></view>
               <view class="goods-details">
-                <view class="goods-name">锃光瓦亮大白菜 500g</view>
-                <view class="price-no"><text>超市价：</text><text>￥4.00~5.00</text></view>
-                <view class="price-yes">批发价：<text>￥2.60</text></view>
+                <view class="goods-name">{{item.goodsName}}</view>
+                <view class="price-no"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
+                <view class="price-yes">批发价：<text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
               </view>
-              <view class="cart" wx:if="{{num == 0}}" catchtap="addCount">
+              <view class="cart" wx:if="{{!item.car || item.car.gnormsNum==0}}" catchtap="addCar" data-id='{{item.gnormsId}}'>
               </view>
-              <view class="add2" wx:else="">
-                <image catchtap="delCount" src="https://app.tjhengrun.cn/image/jian.png"/>
-                <text>{{num}}</text>
-                <image catchtap="addCount" src="https://app.tjhengrun.cn/image/jia.png"/>
+              <view class="add2" wx:else>
+                <image catchtap="delCar" data-id='{{item.gnormsId}}' src="https://app.tjhengrun.cn/image/jian.png"/>
+                <text>{{item.car.gnormsNum}}</text>
+                <image catchtap="addCar" data-id='{{item.gnormsId}}' src="https://app.tjhengrun.cn/image/jia.png"/>
               </view>
             </view>
           </navigator>

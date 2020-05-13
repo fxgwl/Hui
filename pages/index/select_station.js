@@ -1,18 +1,20 @@
 // pages/index/select_station.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addressList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getAddress();
   },
 
   /**
@@ -63,9 +65,33 @@ Page({
   onShareAppMessage: function () {
 
   },
-  gohome: function(){
+  gohome: function(event){
+    var that=this;
+    var addressId = event.currentTarget.dataset.id;
+    for(var i=0;i<that.data.addressList.length;i++){
+      if (addressId == that.data.addressList[i].address_id){
+        wx.setStorageSync("myAddress", that.data.addressList[i])
+      }
+    }
     wx.switchTab({
       url: '/pages/home/home',
     })
-  }
+  },
+  getAddress : function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/get_adress_list",
+      data: {
+        pageval: 1,
+        pagesize:10
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.setData({
+            addressList: res.data.data.list
+          })
+        }
+      }
+    })
+  },
 })

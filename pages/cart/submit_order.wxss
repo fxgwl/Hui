@@ -56,14 +56,14 @@ page {
 .con2 {
   padding: 0 30rpx;
 }
-.bg1 {
+/* .bg1 {
   height: 340rpx;
   overflow: hidden;
 }
 .bg2 {
   height: auto;
   overflow: visible;
-}
+} */
 .con2_item {
   height: 170rpx;
 }

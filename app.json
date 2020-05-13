@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cart/order_finish",
     "pages/login/warrant",
     "pages/index/index",
     "pages/home/home",
@@ -10,7 +11,7 @@
     "pages/pickup/pickup",
     "pages/cart/cart",
     "pages/cart/submit_order",
-    "pages/cart/order_finish",
+    
     "pages/my/my",
     "pages/my/my_order",
     "pages/my/order_details",

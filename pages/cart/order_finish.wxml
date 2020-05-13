@@ -1,6 +1,6 @@
 <!--pages/cart/order_finish.wxml-->
 <view class="details_a">
-  <view class="local flex1"><text>取货点：</text><text>取货点取货点取货点取货点</text></view>
+  <view class="local flex1"><text>取货点：</text><text>{{order.harlan_member_taddress.address_detail}}</text></view>
   <view class="time flex1">
     <text>取货时间：</text>
     <view><text>4月10日</text><text class="time1">下午5点</text></view>
@@ -9,11 +9,11 @@
 <view class="details_a">
   <view class="local flex1">
     <text>取货人：</text>
-    <text>王大锤</text>
+    <text>{{order.sporder_user}}</text>
   </view>
   <view class="time flex1">
     <text>联系电话：</text>
-    <text>1383838438</text>
+    <text>{{order.sporder_tel}}</text>
   </view>
 </view>
 <view class="details_b">
@@ -67,17 +67,12 @@
 <view class="details_c">
   <image src="https://app.tjhengrun.cn/image/num.png"/>
   <view class="flex1">
-    <text>6</text>
-    <text>6</text>
-    <text>6</text>
-    <text>6</text>
-    <text>6</text>
-    <text>6</text>
+    <text wx:for="{{order.sporder_code}}">{{item}}</text>
   </view>
 </view>
 <view class="details_d flex1">
   <view class="details_d1 flex1">
-    <view><text>￥</text><text>343</text></view>
+    <view><text>￥</text><text>{{order.sporderPrice}}</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
   <text class="details_d2">返回首页</text>

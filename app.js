@@ -101,6 +101,7 @@ App({
     systemInfo: null,//客户端设备信息
     userInfo: null,
     hostUrl:"https://hui.lyhuiqiao.com/",
+    conIsCan:true,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#999999",

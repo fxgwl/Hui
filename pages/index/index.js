@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     
@@ -20,7 +19,7 @@ Page({
         const longitude = res.longitude
         const speed = res.speed
         const accuracy = res.accuracy
-        var wechatNick = encodeURI('小晓');
+        var wechatNick = encodeURI(app.globalData.userInfo.nickName);
         var wechatHeadPic = encodeURI(app.globalData.userInfo.avatarUrl);
         console.log(wechatNick);
         wx.request({

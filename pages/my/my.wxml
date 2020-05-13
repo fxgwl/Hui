@@ -9,9 +9,9 @@
 
 <view class="user">
   <view class="pic">
-    <image src="https://app.tjhengrun.cn/image/goods1.png"/>
+    <image src="{{user.avatarUrl}}"/>
   </view>
-  <text class="name">昵称</text>
+  <text class="name">{{user.nickName}}</text>
 </view>
 <!-- 列表 -->
 <view class="con_list">

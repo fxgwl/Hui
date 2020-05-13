@@ -9,7 +9,7 @@
             <image wx:else bindtap="selectAll"  src="https://app.tjhengrun.cn/image/cart_none.png"/>
             <text>全选</text>
         </view>
-        <view class='del' bindtap='deletes'><text>删除</text></view>
+        <view class='del' bindtap='delAllGoodOfCar'><text>删除</text></view>
       </view>
       <!-- 列表 -->
       <view class="list flex1" wx:for="{{list}}" wx:key="{{index}}">
@@ -19,21 +19,21 @@
         <image class="list_choose" wx:else type="circle" data-index="{{index}}" bindtap="selectList" src="https://app.tjhengrun.cn/image/cart_none.png"/>
         
         <!-- 列表商品图片 -->
-        <image class="list_img" src="{{item.image}}"></image>
+        <image class="list_img" src="{{item.harlan_gnorms.goodsPic}}"></image>
         <!-- 列表标题  价格 -->
         <view class="list_con">
-          <text class="list_name">{{item.title}}</text>
+          <text class="list_name">{{item.harlan_gnorms.harlan_goods.goodsName}}</text>
           <view class="list_price">
-            <text>￥{{item.price}}</text>
-            <view class="delprice"><text>￥{{item.price}}</text></view>
+            <text>￥{{item.harlan_gnorms.goodsMallprice}}</text>
+            <view class="delprice"><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
           </view>
         </view>
         
         <!-- 商品数量加减 -->
         <view class="carts-num flex1" style='display:{{show_edit}}'>
-          <image bindtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" src="https://app.tjhengrun.cn/image/jian.png"/>
-					<text bindinput='input_num' data-index="{{index}}">{{item.num}}</text>
-					<image bindtap="btn_add" data-index="{{index}}" src="https://app.tjhengrun.cn/image/jia.png"/>
+          <image bindtap="jianCar" data-id="{{item.gnormsId}}" src="https://app.tjhengrun.cn/image/jian.png"/>
+					<text bindinput='input_num' data-index="{{index}}">{{item.gnormsNum}}</text>
+					<image bindtap="addCar" data-id="{{item.gnormsId}}" src="https://app.tjhengrun.cn/image/jia.png"/>
         </view>
       </view>    
   </view>  

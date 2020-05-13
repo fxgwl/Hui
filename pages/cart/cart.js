@@ -1,7 +1,5 @@
-
 //获取应用实例
 const app = getApp()
-
 var numbers = 1;
 Page({
   data: {
@@ -11,44 +9,22 @@ Page({
     // 默认展示数据
     hasList: true,
     // 商品列表数据
-    list: [{
-      id: 1,
-      title: '园艺大师抗皱精华露园艺大师抗皱精华露园艺大师抗皱精华露',
-      image: 'https://app.tjhengrun.cn/image/goods1.png',
-      pro_name: "30ml",
-      num: 1,
-      price: 180,
-      selected: true
-    },
-    {
-      id: 2,
-      title: '伊芙琳玫瑰护手霜',
-      image: 'https://app.tjhengrun.cn/image/goods1.png',
-      pro_name: "25g",
-      num: 1,
-      price: 62,
-      selected: true
-    },
-    {
-      id: 2,
-      title: '燕麦山羊乳舒缓护手霜',
-      image: 'https://app.tjhengrun.cn/image/goods1.png',
-      pro_name: "75ml",
-      num: 1,
-      price: 175,
-      selected: true
-    }
-    ],
+    list: [],
     // 金额
     totalPrice: 0, // 总价，初始为0
     // 全选状态
     selectAllStatus: true, // 全选状态，默认全选
+    hostUrl:""
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     app.editTabbar();
+    that.setData({
+      hostUrl:app.globalData.hostUrl+"upload/",
+    })
   },
   onShow() {
     wx.showToast({
@@ -56,9 +32,8 @@ Page({
       icon: "loading",
       duration: 1000
     })
-
-    // 价格方法
-    this.count_price();
+    this.getMyCart();
+    
   },
   /**
    * 当前商品选中事件
@@ -89,13 +64,6 @@ Page({
     that.count_price();
   },
 
-  // 删除
-  deletes: function (e) {
-    
-  },
-
-
-
   /**
    * 购物车全选事件
    */
@@ -119,58 +87,19 @@ Page({
     this.count_price();
   },
 
-  /**
-   * 绑定加数量事件
-   */
-  btn_add(e) {
-    // 获取点击的索引
-    const index = e.currentTarget.dataset.index;
-    // 获取商品数据
-    let list = this.data.list;
-    // 获取商品数量
-    let num = list[index].num;
-    // 点击递增
-    num = num + 1;
-    list[index].num = num;
-    // 重新渲染 ---显示新的数量
-    this.setData({
-      list: list
-    });
-    // 计算金额方法
-    this.count_price();
-  },
-  
-  /**
-   * 绑定减数量事件
-   */
-  btn_minus(e) {
-    //   // 获取点击的索引
-    const index = e.currentTarget.dataset.index;
-    // const obj = e.currentTarget.dataset.obj;
-    // console.log(obj);
-    // 获取商品数据
-    let list = this.data.list;
-    // 获取商品数量
-    let num = list[index].num;
-    // 判断num小于等于1  return; 点击无效
-    if (num <= 1) {
-      return false;
-    }
-    // else  num大于1  点击减按钮  数量--
-    num = num - 1;
-    list[index].num = num;
-    // 渲染页面
-    this.setData({
-      list: list
-    });
-    // 调用计算金额方法
-    this.count_price();
-  },
   // 提交订单
   btn_submit_order: function () {
     var that = this;
-    console.log(that.data.totalPrice);
-
+    var cartsId="";
+    for(var i=0;i<that.data.list.length;i++){
+      if(that.data.list[i].selected){
+        if(cartsId==""){
+          cartsId=that.data.list[i].cartId;
+        }else{
+          cartsId+=","+that.data.list[i].cartId;
+        }
+      }
+    }
     // 调起支付
     // wx.requestPayment(
     //   {
@@ -183,8 +112,15 @@ Page({
     //     'fail': function (res) { },
     //     'complete': function (res) { }
     //   })
+    if (cartsId==""){
+      wx.showModal({
+        title: '提示',
+        content: '您还没有选择商品',
+      })
+      return;
+    }
     wx.navigateTo({
-      url: 'submit_order',
+      url: 'submit_order?cartsId='+cartsId,
     })
   },
   // 收藏
@@ -207,7 +143,7 @@ Page({
       // 判断选中计算价格
       if (list[i].selected) {
         // 所有价格加起来 count_money
-        total += list[i].num * list[i].price;
+        total += list[i].gnormsNum * list[i].harlan_gnorms.goodsMallprice;
       }
     }
     // 最后赋值到data中渲染到页面
@@ -215,6 +151,132 @@ Page({
       list: list,
       totalPrice: total.toFixed(2)
     });
+  },
+  getMyCart: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/cart_info",
+      data: {
+        memberId: wx.getStorageSync('memberId'),
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.setData({
+            list:res.data.data.list
+          })
+          for(var i=0;i<that.data.list.length;i++){
+            that.data.list[i].selected=true
+            if(that.data.list[i].gnormsNum==0){
+              that.delOneGoodOfCar(that.data.list[i].cartId);
+            }
+          }
+          // that.setData({
+          //   list: that.data.list
+          // })
+          // 价格方法
+          that.count_price();
+          console.log("myCart==", that.data.list);
+        }
+      }
+    })
+  },
+  addCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum: "1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for(var i=0;i<that.data.list.length;i++){
+            if (that.data.list[i].gnormsId == gnormsId){
+              that.data.list[i].gnormsNum++;
+            }
+          }
+          that.setData({
+            list: that.data.list
+          })
+          that.count_price();
+          console.log("加入成功");
+        }
+      }
+    })
+  },
+  jianCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum: "-1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for (var i = 0; i < that.data.list.length; i++) {
+            if (that.data.list[i].gnormsId == gnormsId) {
+              that.data.list[i].gnormsNum--;
+              if (that.data.list[i].gnormsNum==0){
+                that.delOneGoodOfCar(that.data.list[i].cartId);
+              }
+            }
+          }
+          that.setData({
+            list: that.data.list
+          })
+          that.count_price();
+          console.log("减去成功");
+        }
+      }
+    })
+  },
+  //删除购物车里单件商品
+  delOneGoodOfCar: function (cartId) {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/del_cart_info",
+      data: {
+        cartId: cartId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.getMyCart();
+          console.log("减去成功");
+        }
+      }
+    })
+  },
+  //删除购物车里多件商品
+  delAllGoodOfCar: function () {
+    var that = this;
+    var cartIds='';
+    for(var i=0;i<that.data.list.length;i++){
+      if(that.data.list[i].selected){
+        if(cartIds==''){
+          cartIds=that.data.list[i].cartId;
+        }else{
+          cartIds+=","+that.data.list[i].cartId;
+        }
+      }
+    }
+    cartIds=encodeURI(cartIds);
+    wx.request({
+      url: app.globalData.hostUrl + "app/del_cart_multi",
+      data: {
+        cartIds: cartIds
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          that.getMyCart();
+          console.log("减去多个商品成功");
+        }
+      }
+    })
   },
 })
 

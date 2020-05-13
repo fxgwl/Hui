@@ -2,7 +2,6 @@
 //获取应用实例
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,7 +11,10 @@ Page({
     cate: [],
     currentId: '',
     classGoods:[],
-    section:[]
+    section:[],
+    myCar:[],
+    myAddress: wx.getStorageSync("myAddress"),
+    timeGoods:[]
     // section: [{
     //   name: '蔬菜',
     //   typeId: '1',
@@ -57,7 +59,6 @@ Page({
     //this.setData({ slides:res.data })
     // }
     // })
-    this.getClass();//获取商品品类
     app.editTabbar();
   },
 
@@ -72,7 +73,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getClass();//获取商品品类
+    this.getTimeGoods();//限时秒杀中的商品
+    this.setData({
+      myAddress:wx.getStorageSync("myAddress")
+    })
   },
 
   /**
@@ -139,7 +144,112 @@ Page({
             classGoods:res.data.data.list
           })
         }
+        that.getCar();
       }
     })
-  }
+  },
+  getCar: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/cart_info",
+      data: {
+        memberId: wx.getStorageSync("memberId"),
+      },
+      success: function (res) {
+        console.log("mycar",res);
+        if (res.data.code == 1) {
+          that.setData({
+            myCar: res.data.data.list
+          })
+          for(var i=0;i<that.data.myCar.length;i++){
+            for (var j = 0; j < that.data.classGoods.length; j++) {
+              if (that.data.classGoods[j].gnormsId == that.data.myCar[i].gnormsId){
+                that.data.classGoods[j].car=that.data.myCar[i];
+              }
+          }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("goods==",that.data.classGoods)
+        }
+      }
+    })
+  },
+  addCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum:"1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for(var i=0;i<that.data.classGoods.length;i++){
+            if (gnormsId == that.data.classGoods[i].gnormsId){
+              if(that.data.classGoods[i].car==undefined){
+                var car={};
+                car.gnormsNum=1;
+                that.data.classGoods[i].car=car;
+              }else{
+                that.data.classGoods[i].car.gnormsNum++;
+              }
+            }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("加入成功");
+        }
+      }
+    })
+  },
+  delCar: function (event) {
+    var that = this;
+    var gnormsId = event.currentTarget.dataset.id;
+    wx.request({
+      url: app.globalData.hostUrl + "app/addCart",
+      data: {
+        gnormsNum: "-1",
+        memberId: wx.getStorageSync("memberId"),
+        gnormsId: gnormsId
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          for (var i = 0; i < that.data.classGoods.length; i++) {
+            if (gnormsId == that.data.classGoods[i].gnormsId) {
+              if (that.data.classGoods[i].car == undefined) {
+              } else {
+                that.data.classGoods[i].car.gnormsNum--;
+              }
+            }
+          }
+          that.setData({
+            classGoods: that.data.classGoods
+          })
+          console.log("加入成功");
+        }
+      }
+    })
+  },
+  getTimeGoods: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/get_product",
+      data: {
+        area: "2",
+      },
+      success: function (res) {
+        console.log("timeGoods==",res);
+        if (res.data.code == 1) {
+          that.setData({
+            timeGoods: res.data.data.list
+          })
+        }
+      }
+    })
+  },
 })

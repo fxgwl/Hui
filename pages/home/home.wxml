@@ -3,7 +3,8 @@
 <navigator url="/pages/index/select_station">
   <view class="localbox">
     <image class="local_img1" src="https://app.tjhengrun.cn/image/local1.png" mode="aspectFill"/> 
-    <text>小区地址小区地址</text>
+    <text wx:if="{{myAddress}}">{{myAddress.address_detail}}</text>
+    <text wx:else>您还没有选择小区</text>
     <image class="local_img2" src="https://app.tjhengrun.cn/image/right.png" mode="aspectFill"/>
   </view>
 </navigator>
@@ -33,41 +34,14 @@
 		<image src="{{item.icon}}"/>
 		<text>{{item.name}}</text>
 	</navigator> -->
-	<view class="item" >
-		<image src="https://app.tjhengrun.cn/image/goods1.png"/>
+	<view class="item" wx:for="{{timeGoods}}" wx:key="id">
+		<image src='{{item.harlan_gnorms.goodsPic}}'/>
 		<view class="con">
-		  <view class="name"><text>油菜有机油菜500g啦啦啦啦</text></view>
-		  <view class="super"><text>超市价：</text><text>￥450</text></view>
-      <view class="cheap"><text>批发价：</text><text>￥45</text></view>
+		  <view class="name"><text>{{item.goodsName}}</text></view>
+		  <view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
+      <view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
 		</view>
-    <image src="https://app.tjhengrun.cn/image/rob.png"/>
-	</view>
-	<view class="item">
-		<image src="https://app.tjhengrun.cn/image/goods1.png"/>
-		<view class="con">
-		  <view class="name"><text>油菜有机油菜500g啦啦啦啦</text></view>
-		  <view class="super"><text>超市价：</text><text>￥450</text></view>
-      <view class="cheap"><text>批发价：</text><text>￥45</text></view>
-		</view>
-    <image src="https://app.tjhengrun.cn/image/rob.png"/>
-	</view>
-  <view class="item">
-		<image src="https://app.tjhengrun.cn/image/goods1.png"/>
-		<view class="con">
-		  <view class="name"><text>油菜有机油菜500g啦啦啦啦</text></view>
-		  <view class="super"><text>超市价：</text><text>￥450</text></view>
-      <view class="cheap"><text>批发价：</text><text>￥45</text></view>
-		</view>
-    <image src="https://app.tjhengrun.cn/image/rob.png"/>
-	</view>
-  <view class="item">
-		<image src="https://app.tjhengrun.cn/image/goods1.png"/>
-		<view class="con">
-		  <view class="name"><text>油菜有机油菜500g啦啦啦啦</text></view>
-		  <view class="super"><text>超市价：</text><text>￥450</text></view>
-      <view class="cheap"><text>批发价：</text><text>￥45</text></view>
-		</view>
-    <image src="https://app.tjhengrun.cn/image/rob.png"/>
+    <image src="https://app.tjhengrun.cn/image/rob.png" bindtap="addCar" data-id="{{item.gnormsId}}"/>
 	</view>
 </view>
 <!-- 导航 -->
@@ -85,8 +59,13 @@
 					<view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
 					<view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
 				</view>
-				<view class="add"><image src="https://app.tjhengrun.cn/image/cart_select.png"/></view>
-				<!-- <view class="add add1"></view> -->
+				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" bindtap="addCar" data-id='{{item.gnormsId}}'><image src="https://app.tjhengrun.cn/image/cart_select.png"/></view>
+
+				<view class="add2" wx:else>
+				  <image src="https://app.tjhengrun.cn/image/jian.png" bindtap="delCar" data-id='{{item.gnormsId}}'/>
+					<text>{{item.car.gnormsNum}}</text>
+					<image src="https://app.tjhengrun.cn/image/jia.png" bindtap="addCar" data-id='{{item.gnormsId}}'/>
+				</view>
 			</view>
 	</view>
 </view>

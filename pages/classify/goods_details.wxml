@@ -11,20 +11,19 @@
     </block>
   </swiper>
   <view class="content">
-    <view class="goods-name">锃光瓦亮大白菜 500g</view>
+    <view class="goods-name">{{good.harlan_goods.goodsName}}</view>
     <view class="goods-state">
       <view class="state">
-      欧洲油菜( Rassina napss I)属十字花料属油料作物，直立。仪幼时有少数基区有裂片中部及上部生时由长国国形新变成针形。
-      欧洲油菜( Rassina napss I)属十字花料属油料作物，直立。仪幼时有少数基区有裂片中部及上部生时由长国国形新变成针形。
+      {{good.goodsDes}}
       </view>
       <view class="share">分享好友</view>
     </view>
     <view class="goods-price">
       <view class="price">
-        <view class="price-no"><text>超市价：</text><text>￥4.00~5.00</text></view>
-        <view class="price-yes">批发价：<text>￥2.60</text></view>
+        <view class="price-no"><text>超市价：</text><text>￥{{good.goodsMarketprice}}</text></view>
+        <view class="price-yes">批发价：<text>￥{{good.goodsMallprice}}</text></view>
       </view>
-      <view class="goods-sold">已售<text>99999</text>份</view>
+      <view class="goods-sold">已售<text>{{good.goodsSalesnum}}</text>份</view>
     </view>
   </view>
   <view class="goods-tag">
@@ -34,7 +33,7 @@
       <view>坏果包赔</view>
     </view>
   <view class="bottom-box">
-    <view class="cart" bindtap="opencart"><view class="corner-marker">88</view></view>
-    <view class="add-cart">加入购物车</view>
+    <view class="cart" bindtap="opencart"><view class="corner-marker">{{myCarNum}}</view></view>
+    <view class="add-cart" bindtap="addCar" data-id="{{good.gnormsId}}">加入购物车</view>
   </view>
 </view>
