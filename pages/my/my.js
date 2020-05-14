@@ -10,7 +10,8 @@ Page({
     tabbar: {},
     showModal: false,
     showModalEat: false,
-    user:{}
+    user:{},
+    textContent:''
   },
 
 
@@ -58,7 +59,7 @@ Page({
     app.editTabbar();
     that.setData({
       user: app.globalData.userInfo
-    })
+    });
   },
 
   /**
@@ -109,6 +110,9 @@ Page({
   onShareAppMessage: function () {
 
   },
+  /**
+   * 权限设置
+   */
   gotoSet : function(){
     wx.openSetting({
       success(res) {
@@ -117,6 +121,59 @@ Page({
         //   "scope.userInfo": true,
         //   "scope.userLocation": true
         // }
+      }
+    })
+  },
+  getContent : function(event){
+    this.setData({
+      textContent: event.detail.value
+    })
+  },
+  pushSubmit : function(){
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/set_suggestion",
+      data:{
+        memberId: wx.getStorageSync('memberId'),
+        suggestionContent:that.data.textContent
+      },
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log("my/my.js>>pushSubmit==", res)
+        }
+        if(res.data.code==1){
+          wx.showToast({
+            title: '提交成功',
+          })
+          that.toggleDialogEat();
+        }
+      }
+    })
+  },
+  /**
+   * 用户签到
+   */
+  goSign: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/user_signin",
+      data: {
+        memberId: wx.getStorageSync('memberId')
+      },
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log("my/my.js>>goSign==", res);
+        }
+        if (res.data.code == 1) {
+          wx.showToast({
+            title: '签到成功',
+          })
+        }else if(res.data.code == 1103){
+          wx.showToast({
+            title: '今天已经签到',
+            icon:'none'
+          })
+        }
       }
     })
   }

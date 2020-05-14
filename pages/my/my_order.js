@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentId: '1',
+    currentId: '',
     section: [{
       name: '全部',
       typeId: '1',
@@ -30,7 +30,7 @@ Page({
       typeId: '5',
       goods:'蔬菜'
     }],
-    status: "",
+    status: '',
     orderList:[]
   },
   //点击每个导航的点击事件
@@ -40,7 +40,7 @@ Page({
     var state="";
     switch(id){
       case "1":
-        state="";
+        state=" ";
       break;
       case "2":
         state = "0";
@@ -57,7 +57,8 @@ Page({
     }
     that.setData({
       currentId: id,
-      status: state
+      status: state,
+      orderList:[]
     })
     pageval="1";
     that.getOrderList();
@@ -66,6 +67,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var num=options.type;
+    var state="";
+    switch (num) {
+      case "1":
+        state = "";
+        break;
+      case "2":
+        state = "0";
+        break;
+      case "3":
+        state = "1";
+        break;
+      case "4":
+        state = "3";
+        break;
+      case "5":
+        state = "4";
+        break;
+    }
+    this.setData({
+      currentId: num,
+      status: state
+    })
     this.getOrderList();
   },
 
@@ -119,6 +143,10 @@ Page({
   },
   getOrderList : function(){
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     wx.request({
       url: app.globalData.hostUrl + "app/user_order",
       data: {
@@ -142,6 +170,9 @@ Page({
             })
           }
         }
+      },
+      complete:function(res){
+        wx.hideLoading();
       }
     })
   },
@@ -202,4 +233,32 @@ Page({
       url: '../cart/order_finish?orderId=' + orderId,
     });
   },
+  /**
+   * 取消订单，确认收货
+   * cgval=4,cgval=3;orderid
+   */
+  setOrderState: function (event) {
+    var that = this;
+    var cgval = event.currentTarget.dataset.state;
+    var orderid = event.currentTarget.dataset.id
+    wx.request({
+      url: app.globalData.hostUrl + "app/handle_order",
+      data: {
+        cgval: cgval,
+        iscgpare:"0",
+        orderid: orderid
+      },
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log("my/my.js>>setOrderState==", res);
+        }
+        if (res.data.code == 1) {
+          wx.showToast({
+            title: '成功',
+          })
+          that.getOrderList();
+        }
+      }
+    })
+  }
 })

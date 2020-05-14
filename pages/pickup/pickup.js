@@ -1,13 +1,15 @@
 // pages/pickup/pickup.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+var pageval="1";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabbar: {}
+    tabbar: {},
+    orderList:[]
   },
 
   /**
@@ -15,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
+    this.getOrderList();
   },
 
   /**
@@ -64,5 +67,33 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  getOrderList: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.hostUrl + "app/user_order",
+      data: {
+        memberId: wx.getStorageSync('memberId'),
+        pageval: pageval,
+        status: "1"
+      },
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log(res);
+        }
+        if (res.data.code == 1) {
+          if (res.data.data.list.length > 0) {
+            that.setData({
+              orderList: res.data.data.list
+            })
+          } else {
+            wx.showToast({
+              title: '你还没有订单',
+              icon: 'none'
+            })
+          }
+        }
+      }
+    })
+  },
 })

@@ -14,6 +14,7 @@ Page({
     classGoods: [],
     section: [],
     myCar: [],
+    searchTxt:''
   },
   //点击每个导航的点击事件
   handleTap: function (e) {
@@ -34,7 +35,13 @@ Page({
       "num" :1,
     }) 
   },
-
+  getSearch : function(event){
+    this.setData({
+      searchTxt: event.detail.value
+    })
+    this.getGoods();
+    console.log(event)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -112,7 +119,8 @@ Page({
     wx.request({
       url: app.globalData.hostUrl + "app/get_product",
       data: {
-        category: this.data.currentId,
+        category: that.data.currentId,
+        searchtxt:that.data.searchTxt
       },
       success: function (res) {
         console.log(res);
@@ -120,6 +128,12 @@ Page({
           that.setData({
             classGoods: res.data.data.list
           })
+          if(res.data.data.list.length==0){
+            wx.showToast({
+              title: '暂无商品',
+              icon:"none"
+            })
+          }
         }
         that.getCar();
       }

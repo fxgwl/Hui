@@ -30,11 +30,11 @@
           <view class="price"><text>合计：</text><text>￥</text><text>{{item.sporderPrice}}</text></view>
         </view>
         <view class="con3_b2" wx:if="{{item.sporderStatus==0}}">
-          <text class="apply">取消订单</text>
+          <text class="apply" catchtap="setOrderState" data-id="{{item.sporderId}}" data-state="4">取消订单</text>
           <text bindtap="gotoPay" data-id="{{item.sporderId}}">去支付</text></view>
         <view class="con3_b2" wx:elif="{{item.sporderStatus==1}}">
           <!-- <navigator url="../my/apply_refund"><text class="apply">申请退款</text></navigator> -->
-          <text>确认收货</text>
+          <text catchtap="setOrderState" data-id="{{item.sporderId}}" data-state="3">确认收货</text>
         </view>
         <view class="con3_b2" wx:elif="{{item.sporderStatus==3 || item.sporderStatus==4}}">
           <text>查看订单</text>

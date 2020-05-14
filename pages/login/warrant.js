@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
 
-    if (wx.getStorageSync('openid')) {
+    if (wx.getStorageSync('openid') && wx.getStorageSync('memberId')) {
       wx.navigateTo({
         url: '../index/index'
       })
