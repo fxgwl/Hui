@@ -59,7 +59,7 @@
 					<view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
 					<view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
 				</view>
-				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" bindtap="addCar" data-id='{{item.gnormsId}}'><image src="https://app.tjhengrun.cn/image/cart_select.png"/></view>
+				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" bindtap="addCar" data-id='{{item.gnormsId}}'></view>
 
 				<view class="add2" wx:else>
 				  <image src="https://app.tjhengrun.cn/image/jian.png" bindtap="delCar" data-id='{{item.gnormsId}}'/>

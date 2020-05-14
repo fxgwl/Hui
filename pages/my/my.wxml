@@ -39,13 +39,13 @@
     </navigator>
   </view>
   <view class="list list_b">
-    <navigator url="../my/refund_notes" class="flex1">
+    <!--<navigator url="../my/refund_notes" class="flex1">
       <view class="list_l"><image style="width: 35rpx;" src="https://app.tjhengrun.cn/image/my4.png"/></view>
       <view class="list_r flex1">
         <text>退款记录</text>
         <image  src="https://app.tjhengrun.cn/image/my_right.png"/>
       </view>
-    </navigator>
+    </navigator>-->
     <view class="flex1" bindtap="btnEat">
       <view class="list_l"><image src="https://app.tjhengrun.cn/image/my5.png"/></view>
       <view class="list_r flex1">

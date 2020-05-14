@@ -131,7 +131,7 @@
   background: url(https://app.tjhengrun.cn/image/bottom.png);
   background-repeat: no-repeat;
   background-size: 22rpx 13rpx;
-  background-position: 104rpx center;
+  background-position: 125rpx center;
 }
 .item_nav .kind_item {
   height: 230rpx;
@@ -163,27 +163,29 @@
 }
 .item_nav .kind_item .add {
   position: absolute;
+  bottom:50rpx;
   right: 23rpx;
-  bottom: 66rpx;
-}
-.item_nav .kind_item .add image {
-  width: 30rpx;
-  height: 30rpx;
+  width: 120rpx;
+  height: 50rpx;
+  background: url(https://app.tjhengrun.cn/image/cart_select.png) no-repeat;
+  background-position: center;
+  background-size: 42rpx 38rpx;
 }
 .item_nav .kind_item .add2 {
-  width: 80rpx;
-  height: 25rpx;
+  width: 150rpx;
+  height: 50rpx;
   position: absolute;
   right: 23rpx;
-  bottom: 66rpx;
+  bottom: 50rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   font-size: 30rpx;
   font-weight: 600;
+  padding: 0 20rpx;
 }
 .item_nav .kind_item .add2 image {
-  width: 22rpx;
-  height: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
 }

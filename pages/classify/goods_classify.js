@@ -42,12 +42,17 @@ Page({
     this.getGoods();
     console.log(event)
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
     app.editTabbar();
+    //可视窗口x,y坐标
+    this.busPos = {};
+    this.busPos['x'] = app.globalData.ww * .7;
+    this.busPos['y'] = app.globalData.hh * 1.1;
   },
 
   /**
