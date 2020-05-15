@@ -187,7 +187,7 @@ App({
     userInfo: null,
     hostUrl:"https://hui.lyhuiqiao.com/",
     picUrl: "https://hui.lyhuiqiao.com/upload/image/",
-    conIsCan:true,
+    conIsCan:false,
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#999999",

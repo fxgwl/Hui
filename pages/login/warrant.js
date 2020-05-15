@@ -114,7 +114,9 @@ Page({
   
   },
   getUserInfo: function (e) {
-    console.log(e)
+    if (app.globalData.conIsCan) {
+      console.log(e);
+    }
     app.globalData.userInfo = e.detail.userInfo
     wx.setStorageSync('userInfo', e.detail.userInfo)
     this.setData({
@@ -128,7 +130,9 @@ Page({
     // }
     var wechatNick = encodeURI(app.globalData.userInfo.nickName);
     var wechatHeadPic = encodeURI(app.globalData.userInfo.avatarUrl);
-    console.log(wechatNick);
+    if (app.globalData.conIsCan) {
+      console.log(wechatNick);
+    }
     wx.request({
       url: 'https://hui.lyhuiqiao.com/app/wechatLogin',
       data: {
@@ -137,7 +141,9 @@ Page({
         wechatHeadPic: wechatHeadPic
       },
       success: function (res) {
+        if(app.globalData.conIsCan){
         console.log(res);
+        }
         wx.setStorageSync("memberId", res.data.data.memberId);
         wx.navigateTo({
           url: '../index/index'

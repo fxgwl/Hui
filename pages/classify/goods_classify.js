@@ -41,7 +41,9 @@ Page({
       searchTxt: event.detail.value
     })
     this.getGoods();
-    console.log(event)
+    if (app.globalData.conIsCan) {
+      console.log(event)
+    }
   },
 
   /**
@@ -109,7 +111,9 @@ Page({
     wx.request({
       url: app.globalData.hostUrl + "app/get_category",
       success: function (res) {
-        console.log(res);
+        if (app.globalData.conIsCan) {
+          console.log(res);
+        }
         if (res.data.code == 1) {
           that.setData({
             section: res.data.data.list,
@@ -129,7 +133,9 @@ Page({
         searchtxt:that.data.searchTxt
       },
       success: function (res) {
-        console.log(res);
+        if (app.globalData.conIsCan) {
+          console.log(res);
+        }
         if (res.data.code == 1) {
           that.setData({
             classGoods: res.data.data.list
@@ -153,7 +159,9 @@ Page({
         memberId: wx.getStorageSync("memberId"),
       },
       success: function (res) {
-        console.log("mycar", res);
+        if (app.globalData.conIsCan) {
+          console.log("mycar", res);
+        }
         if (res.data.code == 1) {
           that.setData({
             myCar: res.data.data.list
@@ -168,7 +176,9 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("goods==", that.data.classGoods)
+          if (app.globalData.conIsCan) {
+            console.log("mycar", res);
+          }
         }
       }
     })
@@ -199,7 +209,9 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("加入成功");
+          if (app.globalData.conIsCan) {
+            console.log("加入成功");
+          }
         }
       }
     })
@@ -227,7 +239,9 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("加入成功");
+          if (app.globalData.conIsCan) {
+            console.log("加入成功");
+          }
         }
       }
     })

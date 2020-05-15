@@ -176,7 +176,9 @@ Page({
           // })
           // 价格方法
           that.count_price();
-          console.log("myCart==", that.data.list);
+          if(app.globalData.conIsCan){
+            console.log("myCart==", that.data.list);
+          }
         }
       }
     })
@@ -202,7 +204,9 @@ Page({
             list: that.data.list
           })
           that.count_price();
-          console.log("加入成功");
+          if (app.globalData.conIsCan) {
+            console.log("加入成功");
+          }
         }
       }
     })
@@ -231,7 +235,9 @@ Page({
             list: that.data.list
           })
           that.count_price();
-          console.log("减去成功");
+          if (app.globalData.conIsCan) {
+            console.log("减去成功");
+          }
         }
       }
     })
@@ -247,7 +253,9 @@ Page({
       success: function (res) {
         if (res.data.code == 1) {
           that.getMyCart();
-          console.log("减去成功");
+          if (app.globalData.conIsCan) {
+            console.log("减去成功");
+          }
         }
       }
     })
@@ -274,7 +282,9 @@ Page({
       success: function (res) {
         if (res.data.code == 1) {
           that.getMyCart();
-          console.log("减去多个商品成功");
+          if (app.globalData.conIsCan) {
+            console.log("减去多个商品成功");
+          }
         }
       }
     })

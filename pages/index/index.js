@@ -53,16 +53,19 @@ Page({
  pushMsg: function () {
     wx.getSetting({
       success: (res) => {
-        console.log(res);
-        console.log(res.authSetting['scope.userLocation']);
+        if (app.globalData.conIsCan) {
+          console.log(res);
+          console.log(res.authSetting['scope.userLocation']);
+        }
         if (res.authSetting['scope.userLocation'] == undefined && res.authSetting['scope.userLocation'] != true) {
           wx.showModal({
             title: '提示',
             content: '需要获取您的地理位置，请前往授权，否则将无法使用信息发布！',
             success: function (res) {
               if (res.cancel) {
-                console.info("1授权失败返回数据");
-
+                if (app.globalData.conIsCan){
+                  console.info("1授权失败返回数据");
+                }
               } else if (res.confirm) {
                 wx.switchTab({
                   url: '/pages/home/home',

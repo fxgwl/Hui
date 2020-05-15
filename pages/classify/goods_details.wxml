@@ -16,7 +16,7 @@
       <view class="state">
       {{good.goodsDes}}
       </view>
-      <view class="share">分享好友</view>
+      <button class="share" open-type="share">分享好友</button>
     </view>
     <view class="goods-price">
       <view class="price">

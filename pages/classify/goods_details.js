@@ -105,7 +105,9 @@ Page({
         guiGeId: that.data.gnormsId,
       },
       success: function (res) {
-        console.log(res);
+        if (app.globalData.conIsCan) {
+          console.log(res);
+        }
         if (res.data.code == 1) {
           that.setData({
             good:res.data.data,
@@ -135,7 +137,9 @@ Page({
         memberId: wx.getStorageSync("memberId"),
       },
       success: function (res) {
-        console.log("mycar", res);
+        if (app.globalData.conIsCan) {
+          console.log("mycar", res);
+        }
         var num=0;
         if (res.data.code == 1) {
           that.setData({
@@ -164,7 +168,9 @@ Page({
       success: function (res) {
         if (res.data.code == 1) {
           that.getCar();
-          console.log("添加成功");
+          if (app.globalData.conIsCan) {
+            console.log("添加成功");
+          }
         }else{
           wx.showModal({
             title: '提示',
@@ -173,5 +179,5 @@ Page({
         }
       }
     })
-  },
+  }
 })

@@ -120,7 +120,9 @@ Page({
     wx.request({
       url: app.globalData.hostUrl +"app/get_category",
       success:function(res){
-        console.log(res);
+        if(app.globalData.conIsCan){
+          console.log(res);
+        }
         if(res.data.code==1){
           that.setData({
             section: res.data.data.list,
@@ -139,7 +141,9 @@ Page({
         category:this.data.currentId,
       },
       success: function (res) {
-        console.log(res);
+        if (app.globalData.conIsCan) {
+          console.log(res);
+        }
         if (res.data.code == 1) {
           that.setData({
             classGoods:res.data.data.list
@@ -157,7 +161,9 @@ Page({
         memberId: wx.getStorageSync("memberId"),
       },
       success: function (res) {
-        console.log("mycar",res);
+        if (app.globalData.conIsCan) {
+          console.log("mycar", res);
+        }
         if (res.data.code == 1) {
           that.setData({
             myCar: res.data.data.list
@@ -172,13 +178,21 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("goods==",that.data.classGoods)
+          if(app.globalData.conIsCan){
+            console.log("goods==", that.data.classGoods)
+          }
         }
       }
     })
   },
   addCar: function (event) {
     var that = this;
+    if (!wx.getStorageSync('memberId')) {
+      wx.navigateTo({
+        url: '../login/warrant'
+      })
+      return;
+    }
     if(wx.getStorageSync("myAddress").address_id==undefined){
       wx.showToast({
         title: '请先选择小区',
@@ -210,7 +224,9 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("加入成功");
+          if(app.globalData.conIsCan){
+            console.log("加入成功");
+          }
         }
       }
     })
@@ -218,6 +234,12 @@ Page({
   delCar: function (event) {
     var that = this;
     var gnormsId = event.currentTarget.dataset.id;
+    if (!wx.getStorageSync('memberId')) {
+      wx.navigateTo({
+        url: '../login/warrant'
+      })
+      return;
+    }
     wx.request({
       url: app.globalData.hostUrl + "app/addCart",
       data: {
@@ -238,7 +260,9 @@ Page({
           that.setData({
             classGoods: that.data.classGoods
           })
-          console.log("加入成功");
+          if(app.globalData.conIsCan){
+            console.log("加入成功");
+          }
         }
       }
     })
@@ -251,7 +275,9 @@ Page({
         area: "2",
       },
       success: function (res) {
-        console.log("timeGoods==",res);
+        if(app.globalData.conIsCan){
+          console.log("timeGoods==", res);
+        }
         if (res.data.code == 1) {
           that.setData({
             timeGoods: res.data.data.list
