@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picUrl: app.globalData.picUrl,
     currentId: '',
     section: [{
       name: '全部',

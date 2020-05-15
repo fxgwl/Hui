@@ -11,7 +11,7 @@
 			<view class="con1 flex1">
         <view class="con1_l">
           <text>{{item.harlan_member_taddress.address_detail}}</text>
-          <image src="https://app.tjhengrun.cn/image/right.png"/>
+          <image src="{{picUrl}}right.png"/>
         </view>
         <text class="con1_r1" wx:if="{{item.sporderStatus==0}}">待付款</text>
         <text class="con1_r23" wx:elif="{{item.sporderStatus==1}}">待自提</text>

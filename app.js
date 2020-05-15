@@ -50,6 +50,9 @@ App({
         }
       }
     })
+    if(wx.getStorageSync('userInfo')){
+      this.globalData.userInfo = wx.getStorageSync('userInfo');
+    }
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -183,6 +186,7 @@ App({
     systemInfo: null,//客户端设备信息
     userInfo: null,
     hostUrl:"https://hui.lyhuiqiao.com/",
+    picUrl: "https://hui.lyhuiqiao.com/upload/image/",
     conIsCan:true,
     tabBar: {
       "backgroundColor": "#ffffff",

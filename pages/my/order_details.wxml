@@ -18,7 +18,7 @@
 <view class="details_b">
   <view class="con1 flex1">
     <text>{{order.harlan_member_taddress.address_detail}}</text>
-    <image  src="https://app.tjhengrun.cn/image/right.png"/>
+    <image  src="{{picUrl}}right.png"/>
   </view>
   <view>
     <view class="con2_item flex1" wx:for="{{goodList}}" wx:key="id">
@@ -35,11 +35,11 @@
   </view>
   <view class="con3 flex1" bindtap="change">
     <view><text>共</text><text>{{goodList.length}}</text><text>种</text></view>
-    <image src="https://app.tjhengrun.cn/image/bottom.png"/>
+    <image src="{{picUrl}}bottom.png"/>
   </view>
 </view>
 <view class="details_c">
-  <image src="https://app.tjhengrun.cn/image/num.png"/>
+  <image src="{{picUrl}}num.png"/>
   <view class="flex1">
     <text wx:for="{{order.sporder_code}}">{{item}}</text>
   </view>

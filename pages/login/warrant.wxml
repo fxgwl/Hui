@@ -1,5 +1,5 @@
 <view class="container">
-  <view class='wa_one' style="background-image: url(https://app.tjhengrun.cn/image/logo.png">
+  <view class='wa_one' style="background-image: url({{picUrl}}logo.png)">
     <text>小区汇汇</text>
   </view>
   <view class='wa_two'>

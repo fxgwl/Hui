@@ -90,7 +90,7 @@
   width: 25%;
   height: 100%;
   line-height: 98rpx;
-  background: url(https://app.tjhengrun.cn/image/safe.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/safe.png) no-repeat;
   background-size: 24rpx 26rpx;
   background-position: 24rpx center;
   font-size: 24rpx;
@@ -110,7 +110,7 @@
 .cart{
   width: 170rpx;
   height: 100%;
-  background: #ffffff url(https://app.tjhengrun.cn/image/cart_select.png) no-repeat;
+  background: #ffffff url(https://hui.lyhuiqiao.com/upload/image/cart_select.png) no-repeat;
   background-position: center;
   background-size: 48rpx 42rpx;
   position: relative;

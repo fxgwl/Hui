@@ -7,11 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picUrl: app.globalData.picUrl,
     tabbar: {},
     showModal: false,
     showModalEat: false,
     user:{},
-    textContent:''
+    textContent: '',
+    myAddress: ''
   },
 
 
@@ -57,9 +59,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     app.editTabbar();
-    that.setData({
-      user: app.globalData.userInfo
-    });
+    
   },
 
   /**
@@ -73,7 +73,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.setData({
+      user: app.globalData.userInfo,
+      myAddress: wx.getStorageSync('myAddress')
+    });
   },
 
   /**

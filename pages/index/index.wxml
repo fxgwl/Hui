@@ -1,10 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  <image class="img-bg" src="https://app.tjhengrun.cn/image/bg_con.png"></image>
+  <image class="img-bg" src="{{picUrl}}bg_con.png"></image>
   <view class="empower">
     <view class="empower-con">
       <view class="part-one">
-        <image src="https://app.tjhengrun.cn/image/logo.png"></image>
+        <image src="{{picUrl}}logo.png"></image>
         <text class="text-one">小区汇汇</text>
         <text class="text-two">申请</text>
       </view>

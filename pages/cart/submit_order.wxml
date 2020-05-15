@@ -19,7 +19,7 @@
 <view class="details_b">
   <view class="con1 flex1">
     <text>国华大厦店</text>
-    <image  src="https://app.tjhengrun.cn/image/right.png"/>
+    <image  src="{{picUrl}}right.png"/>
   </view>
   <view class="con2">
     <view class="con2_item flex1" wx:for="{{list2}}" wx:key="id">
@@ -36,7 +36,7 @@
   </view>
   <view class="con3 flex1" bindtap="change">
     <view><text>共</text><text>{{list.length}}</text><text>件</text></view>
-    <image src="https://app.tjhengrun.cn/image/bottom.png"/>
+    <image src="{{picUrl}}bottom.png"/>
   </view>
 </view>
 

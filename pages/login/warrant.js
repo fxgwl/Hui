@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picUrl: app.globalData.picUrl,
     hasUserInfo: false,
     canIUse: wx.canIUse('request.object.method.GET')
   },
@@ -115,7 +116,7 @@ Page({
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    //wx.setStorageSync('s_userinfo', e.detail.userInfo)
+    wx.setStorageSync('userInfo', e.detail.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,

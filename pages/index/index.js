@@ -3,7 +3,7 @@
 const app = getApp()
 Page({
   data: {
-    
+    picUrl: app.globalData.picUrl,
   },
   
   onLoad: function () {

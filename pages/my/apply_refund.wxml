@@ -1,11 +1,11 @@
 <view class="apply_a">
   <view class="apply_a1 flex1" bindtap="btn">
     <text>退款原因：</text>
-    <view class="check"><text>{{nowText}}</text><image src="https://app.tjhengrun.cn/image/right.png"/></view>
+    <view class="check"><text>{{nowText}}</text><image src="{{picUrl}}right.png"/></view>
   </view>
   <view class="apply_a2 flex1" bindtap="btnS">
     <text>货物状态：</text>
-    <view class="check"><text>{{nowTextS}}</text><image src="https://app.tjhengrun.cn/image/right.png"/></view>
+    <view class="check"><text>{{nowTextS}}</text><image src="{{picUrl}}right.png"/></view>
   </view>
 </view>
 
@@ -30,7 +30,7 @@
     <view wx:for="{{arrays}}" data-index="{{index}}" wx:key="index"  bindtap='setText'><text>{{item.con}}</text><view class="circle {{item.typeId == currentId ? 'nav-hover':''}}"></view></view>
   </view>
   <text class="pick" bindtap="pick">提交</text>
-  <image bindtap="ok" class="ok" src="https://app.tjhengrun.cn/image/close.png"/>
+  <image bindtap="ok" class="ok" src="{{picUrl}}close.png"/>
 </view>
 
 <!-- 货物状态 -->
@@ -41,5 +41,5 @@
     <view wx:for="{{Arrays}}" data-index="{{index}}" wx:key="index"  bindtap='setTextS'><text>{{item.con}}</text><view class="circle {{item.typeId == currentIdS ? 'nav-hover':''}}"></view></view>
   </view>
   <text class="pick" bindtap="pickS">提交</text>
-  <image bindtap="okS" class="ok" src="https://app.tjhengrun.cn/image/close.png"/>
+  <image bindtap="okS" class="ok" src="{{picUrl}}close.png"/>
 </view>

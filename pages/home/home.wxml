@@ -2,21 +2,21 @@
 <tabbar tabbar="{{tabbar}}"></tabbar>
 <navigator url="/pages/index/select_station">
   <view class="localbox">
-    <image class="local_img1" src="https://app.tjhengrun.cn/image/local1.png" mode="aspectFill"/> 
+    <image class="local_img1" src="{{picUrl}}local1.png" mode="aspectFill"/> 
     <text wx:if="{{myAddress}}">{{myAddress.address_detail}}</text>
     <text wx:else>您还没有选择小区</text>
-    <image class="local_img2" src="https://app.tjhengrun.cn/image/right.png" mode="aspectFill"/>
+    <image class="local_img2" src="{{picUrl}}right.png" mode="aspectFill"/>
   </view>
 </navigator>
 <swiper class="slides" indicator-dots='true' indicator-color='#6ab5e1' indicator-active-color='#1074bc' circular="true">
 	<swiper-item>
-		<image src="https://app.tjhengrun.cn/image/fiult.png" mode="aspectFill"/>
+		<image src="{{picUrl}}fiult.png" mode="aspectFill"/>
 	</swiper-item>
 	<swiper-item>
-		<image src="https://app.tjhengrun.cn/image/goods1.png" mode="aspectFill"/>
+		<image src="{{picUrl}}goods1.png" mode="aspectFill"/>
 	</swiper-item>
 	<swiper-item>
-		<image src="https://app.tjhengrun.cn/image/goods2.png" mode="aspectFill"/>
+		<image src="{{picUrl}}goods2.png" mode="aspectFill"/>
 	</swiper-item>
   <!-- <swiper-item wx:for="{{slides}}" wx:key="id">
     <navigator wx:if="{{item.link}}" url="{{item.link}}">
@@ -26,8 +26,8 @@
 	</swiper-item> -->
 </swiper>
 <view class="recommend">
-  <image src="https://app.tjhengrun.cn/image/logo.png"/>
-  <image src="https://app.tjhengrun.cn/image/hhlt.png"/>
+  <image src="{{picUrl}}logo.png"/>
+  <image src="{{picUrl}}hhlt.png"/>
 </view>
 <view class="grids">
   <!-- <navigator url="/pages/list/list?cat={{item.id}}"  class="item" wx:for="{{cata}}" wx:key="id">
@@ -41,7 +41,7 @@
 		  <view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
       <view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
 		</view>
-    <image src="https://app.tjhengrun.cn/image/rob.png" bindtap="addCar" data-id="{{item.gnormsId}}"/>
+    <image src="{{picUrl}}rob.png" bindtap="addCar" data-id="{{item.gnormsId}}"/>
 	</view>
 </view>
 <!-- 导航 -->
@@ -62,9 +62,9 @@
 				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" bindtap="addCar" data-id='{{item.gnormsId}}'></view>
 
 				<view class="add2" wx:else>
-				  <image src="https://app.tjhengrun.cn/image/jian.png" bindtap="delCar" data-id='{{item.gnormsId}}'/>
+				  <image src="{{picUrl}}jian.png" bindtap="delCar" data-id='{{item.gnormsId}}'/>
 					<text>{{item.car.gnormsNum}}</text>
-					<image src="https://app.tjhengrun.cn/image/jia.png" bindtap="addCar" data-id='{{item.gnormsId}}'/>
+					<image src="{{picUrl}}jia.png" bindtap="addCar" data-id='{{item.gnormsId}}'/>
 				</view>
 			</view>
 	</view>

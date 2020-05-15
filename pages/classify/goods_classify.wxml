@@ -21,9 +21,9 @@
               <view class="cart" wx:if="{{!item.car || item.car.gnormsNum==0}}" catchtap="addCar" data-id='{{item.gnormsId}}'>
               </view>
               <view class="add2" wx:else>
-                <image catchtap="delCar" data-id='{{item.gnormsId}}' src="https://app.tjhengrun.cn/image/jian.png"/>
+                <image catchtap="delCar" data-id='{{item.gnormsId}}' src="{{picUrl}}jian.png"/>
                 <text>{{item.car.gnormsNum}}</text>
-                <image catchtap="addCar" data-id='{{item.gnormsId}}' src="https://app.tjhengrun.cn/image/jia.png"/>
+                <image catchtap="addCar" data-id='{{item.gnormsId}}' src="{{picUrl}}jia.png"/>
               </view>
             </view>
           </navigator>

@@ -1,10 +1,13 @@
 // pages/my/apply_refund.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    picUrl: app.globalData.picUrl,
     currentId: '',
     picText:'',
     showModal: false,

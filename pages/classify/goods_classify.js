@@ -8,6 +8,7 @@ Page({
    */
   data: {
     tabbar: {},
+    picUrl: app.globalData.picUrl,
     currentId: '',
     num: 0,
     classify: [],

@@ -128,7 +128,7 @@
   font-size: 32rpx;
   font-weight: bold; 
   color: #1074bc;
-  background: url(https://app.tjhengrun.cn/image/bottom.png);
+  background: url(https://hui.lyhuiqiao.com/upload/image/bottom.png);
   background-repeat: no-repeat;
   background-size: 22rpx 13rpx;
   background-position: 125rpx center;
@@ -167,7 +167,7 @@
   right: 23rpx;
   width: 120rpx;
   height: 50rpx;
-  background: url(https://app.tjhengrun.cn/image/cart_select.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/cart_select.png) no-repeat;
   background-position: center;
   background-size: 42rpx 38rpx;
 }

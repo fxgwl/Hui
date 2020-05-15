@@ -4,6 +4,7 @@ var numbers = 1;
 Page({
   data: {
     tabbar: {},
+    picUrl: app.globalData.picUrl,
     // list: [],               // 购物车列表
     // hasList: false,          // 列表是否有数据
     // 默认展示数据

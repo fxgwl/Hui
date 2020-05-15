@@ -9,6 +9,7 @@ Page({
    */
   data: {
     tabbar: {},
+    picUrl: app.globalData.picUrl,
     orderList:[]
   },
 

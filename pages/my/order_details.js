@@ -8,6 +8,7 @@ Page({
    */
 
   data: {
+    picUrl: app.globalData.picUrl,
     bg: true,
     orderId: "",
     pickupTime: '',

@@ -4,9 +4,9 @@
       <view class='cartHeader flex1'>
         <view class='chooseAll flex1'>
             <!-- 全选ICON -->
-            <image wx:if="{{selectAllStatus}}" bindtap="selectAll"  src="https://app.tjhengrun.cn/image/cart_yes.png"/>
+            <image wx:if="{{selectAllStatus}}" bindtap="selectAll"  src="{{picUrl}}cart_yes.png"/>
             <!-- else -->
-            <image wx:else bindtap="selectAll"  src="https://app.tjhengrun.cn/image/cart_none.png"/>
+            <image wx:else bindtap="selectAll"  src="{{picUrl}}cart_none.png"/>
             <text>全选</text>
         </view>
         <view class='del' bindtap='delAllGoodOfCar'><text>删除</text></view>
@@ -15,8 +15,8 @@
       <view class="list flex1" wx:for="{{list}}" wx:key="{{index}}">
       
         <!-- radio选择IOCN -->
-        <image class="list_choose" wx:if="{{item.selected}}" data-index="{{index}}" bindtap="selectList" src="https://app.tjhengrun.cn/image/cart_yes.png"/>
-        <image class="list_choose" wx:else type="circle" data-index="{{index}}" bindtap="selectList" src="https://app.tjhengrun.cn/image/cart_none.png"/>
+        <image class="list_choose" wx:if="{{item.selected}}" data-index="{{index}}" bindtap="selectList" src="{{picUrl}}cart_yes.png"/>
+        <image class="list_choose" wx:else type="circle" data-index="{{index}}" bindtap="selectList" src="{{picUrl}}cart_none.png"/>
         
         <!-- 列表商品图片 -->
         <image class="list_img" src="{{item.harlan_gnorms.goodsPic}}"></image>
@@ -31,9 +31,9 @@
         
         <!-- 商品数量加减 -->
         <view class="carts-num flex1" style='display:{{show_edit}}'>
-          <image bindtap="jianCar" data-id="{{item.gnormsId}}" src="https://app.tjhengrun.cn/image/jian.png"/>
+          <image bindtap="jianCar" data-id="{{item.gnormsId}}" src="{{picUrl}}jian.png"/>
 					<text bindinput='input_num' data-index="{{index}}">{{item.gnormsNum}}</text>
-					<image bindtap="addCar" data-id="{{item.gnormsId}}" src="https://app.tjhengrun.cn/image/jia.png"/>
+					<image bindtap="addCar" data-id="{{item.gnormsId}}" src="{{picUrl}}jia.png"/>
         </view>
       </view>    
   </view>  

@@ -1,6 +1,6 @@
 /**index.wxss**/
 .container{
-  background: url(https://app.tjhengrun.cn/image/bg.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/bg.png) no-repeat;
   background-size: 100% 100%;
   background-position: center;
   padding-bottom: 80rpx;

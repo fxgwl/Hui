@@ -29,7 +29,7 @@ page {
 }
 .nav-hover{
   color: #1074bc;
-  background: url(https://app.tjhengrun.cn/image/line2.png);
+  background: url(https://hui.lyhuiqiao.com/upload/image/line2.png);
   background-repeat: no-repeat;
   background-size: 70% 5rpx;
   background-position: bottom center;

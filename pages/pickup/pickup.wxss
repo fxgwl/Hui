@@ -1,6 +1,6 @@
 /* pages/pickup/pickup.wxss */
 .container{
-  background: url(https://app.tjhengrun.cn/image/bg.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/bg.png) no-repeat;
   background-size: 100% 100%;
   background-position: center;
   padding-bottom: 80rpx;
@@ -13,7 +13,7 @@
 .pickup-first{
   width: 690rpx;
   height: 290rpx;
-  background: url(https://app.tjhengrun.cn/image/pickup_bg.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/pickup_bg.png) no-repeat;
   background-size: 100%;
   background-position: center;
   margin: 0 auto;
@@ -22,7 +22,7 @@
 .pickup-list{
   width: 690rpx;
   height: 295rpx;
-  background: url(https://app.tjhengrun.cn/image/pickup_list.png) no-repeat;
+  background: url(https://hui.lyhuiqiao.com/upload/image/pickup_list.png) no-repeat;
   background-size: 100%;
   background-position: center;
   position: relative;

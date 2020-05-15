@@ -3,16 +3,16 @@
 			<view class="con1 flex1">
         <view class="con1_l">
           <text>国画大厦</text>
-          <image src="https://app.tjhengrun.cn/image/right.png"/>
+          <image src="{{picUrl}}right.png"/>
         </view>
         <text class="con1_r">退款中</text>
       </view>
       <view class="con2 flex1">
         <view class="con2_l">
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
-          <view class="kind"><image src="https://app.tjhengrun.cn/image/goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="{{picUrl}}goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="{{picUrl}}goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="{{picUrl}}goods2.png"/><text class="number">5</text></view>
+          <view class="kind"><image src="{{picUrl}}goods2.png"/><text class="number">5</text></view>
         </view>
         <text class="con2_r">查看更多</text>
       </view>

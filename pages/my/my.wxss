@@ -36,7 +36,7 @@ page {
 .user .pic {
   width: 180rpx;
   height: 180rpx;
-  background: url(https://app.tjhengrun.cn/image/my0.png);
+  background: url(https://hui.lyhuiqiao.com/upload/image/my0.png);
   background-repeat: no-repeat;
   background-size: 180rpx 207rpx;
   position: relative;

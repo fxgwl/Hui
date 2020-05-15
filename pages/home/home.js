@@ -13,6 +13,7 @@ Page({
     classGoods:[],
     section:[],
     myCar:[],
+    picUrl: app.globalData.picUrl,
     myAddress: wx.getStorageSync("myAddress"),
     timeGoods:[]
     // section: [{
