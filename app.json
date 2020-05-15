@@ -1,7 +1,6 @@
 {
   "pages": [
     
-    "pages/login/warrant",
     "pages/index/index",
     "pages/home/home",
     "pages/index/select_station",
@@ -18,7 +17,8 @@
     "pages/my/apply_refund",
     "pages/my/refund_notes",
     "pages/my/refund_details",
-    "pages/my/coupon"
+    "pages/my/coupon",
+    "pages/login/warrant"
   ],
   "window": {
     "backgroundTextStyle": "dark",

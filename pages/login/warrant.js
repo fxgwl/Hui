@@ -16,10 +16,10 @@ Page({
    */
   onLoad: function (options) {
 
-    if (wx.getStorageSync('openid') && wx.getStorageSync('memberId')) {
-      wx.navigateTo({
-        url: '../index/index'
-      })
+    // if (wx.getStorageSync('openid') && wx.getStorageSync('memberId')) {
+    //   wx.navigateTo({
+    //     url: '../index/index'
+    //   })
       
     if (app.globalData.userInfo) {
       this.setData({
@@ -62,7 +62,7 @@ Page({
     //       }
     //     },
     //   })
-     }
+     //}
   },
 
   /**
@@ -120,10 +120,28 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,
     })
-    if (this.data.hasUserInfo == true) {
-      wx.navigateTo({
-        url: '../index/index'
-      })
-    }
+    // if (this.data.hasUserInfo == true) {
+    //   wx.navigateTo({
+    //     url: '../index/index'
+    //   })
+    // }
+    var wechatNick = encodeURI(app.globalData.userInfo.nickName);
+    var wechatHeadPic = encodeURI(app.globalData.userInfo.avatarUrl);
+    console.log(wechatNick);
+    wx.request({
+      url: 'https://hui.lyhuiqiao.com/app/wechatLogin',
+      data: {
+        wechatUid: wx.getStorageSync('openid'),
+        wechatNick: wechatNick,
+        wechatHeadPic: wechatHeadPic
+      },
+      success: function (res) {
+        console.log(res);
+        wx.setStorageSync("memberId", res.data.data.memberId);
+        wx.navigateTo({
+          url: '../index/index'
+        })
+      }
+    })
   }
 })

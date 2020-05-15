@@ -60,6 +60,12 @@ Component({
   methods: {
     goPage: function (event) {
       var url = event.currentTarget.dataset.id;
+      if (!wx.getStorageSync('memberId')){
+        wx.navigateTo({
+          url: '../login/warrant'
+        })
+        return;
+      }
       if (url !="/pages/home/home"){
         if(wx.getStorageSync('myAddress').address_id==undefined){
           wx.showToast({
