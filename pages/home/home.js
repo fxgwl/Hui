@@ -286,4 +286,23 @@ Page({
       }
     })
   },
+  goGoodDetail : function(event){
+    var gnormsId = event.currentTarget.dataset.id;
+    if (!wx.getStorageSync('memberId')) {
+      wx.navigateTo({
+        url: '../login/warrant'
+      })
+      return;
+    };
+    if (wx.getStorageSync("myAddress").address_id == undefined) {
+      wx.showToast({
+        title: '请先选择小区',
+        icon: "none"
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: '../classify/goods_details?gnormsId=' + gnormsId,
+    })
+  },
 })

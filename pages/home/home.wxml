@@ -35,7 +35,7 @@
 		<text>{{item.name}}</text>
 	</navigator> -->
 	<view class="item" wx:for="{{timeGoods}}" wx:key="id">
-		<image src='{{item.harlan_gnorms.goodsPic}}'/>
+		<image src='{{item.harlan_gnorms.goodsPic}}' bindtap="goGoodDetail" data-id="{{item.gnormsId}}"/>
 		<view class="con">
 		  <view class="name"><text>{{item.goodsName}}</text></view>
 		  <view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
@@ -52,19 +52,19 @@
 		</view>
   </view>
   <view class="item_nav"  wx:for="{{classGoods}}" wx:key="id">
-			<view class="kind_item">
+			<view class="kind_item" bindtap="goGoodDetail" data-id="{{item.gnormsId}}">
 			  <view class="pic"><image src='{{item.harlan_gnorms.goodsPic}}'/></view>
 				<view class="con">
 				  <view class="name"><text>{{item.goodsName}}</text></view>
 					<view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
 					<view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
 				</view>
-				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" bindtap="addCar" data-id='{{item.gnormsId}}'></view>
+				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" catchtap="addCar" data-id='{{item.gnormsId}}'></view>
 
 				<view class="add2" wx:else>
-				  <image src="{{picUrl}}jian.png" bindtap="delCar" data-id='{{item.gnormsId}}'/>
+				  <image src="{{picUrl}}jian.png" catchtap="delCar" data-id='{{item.gnormsId}}'/>
 					<text>{{item.car.gnormsNum}}</text>
-					<image src="{{picUrl}}jia.png" bindtap="addCar" data-id='{{item.gnormsId}}'/>
+					<image src="{{picUrl}}jia.png" catchtap="addCar" data-id='{{item.gnormsId}}'/>
 				</view>
 			</view>
 	</view>

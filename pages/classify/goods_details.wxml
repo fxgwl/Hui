@@ -30,7 +30,7 @@
       <view>小区专车</view>
       <view>拎包即走</view>
       <view>个人直批</view>
-      <view>坏果包赔</view>
+      <view>坏果包退</view>
     </view>
   <view class="bottom-box">
     <view class="cart" bindtap="opencart"><view class="corner-marker">{{myCarNum}}</view></view>

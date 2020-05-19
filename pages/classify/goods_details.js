@@ -21,8 +21,9 @@ Page({
       }
     ],
     indicatorDots: true, //小点
-    indicatorColor: "white",//指示点颜色
-    activeColor: "coral",//当前选中的指示点颜色
+
+    indicatorColor: "#6ab5e1",//指示点颜色
+    activeColor: "#1074bc",//当前选中的指示点颜色
     autoplay: false, //是否自动轮播
     interval: 3000, //间隔时间
     duration: 500, //滑动时间
