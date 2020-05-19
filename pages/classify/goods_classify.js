@@ -1,6 +1,7 @@
 // pages/classify/goods_classify.js
 //获取应用实例
 const app = getApp()
+var pageval=1;
 Page({
 
   /**
@@ -25,6 +26,7 @@ Page({
         currentId: id,
         classGoods: []
       })
+      pageval=1;
       this.getGoods();
     }
   },
@@ -40,6 +42,7 @@ Page({
     this.setData({
       searchTxt: event.detail.value
     })
+    pageval=1
     this.getGoods();
     if (app.globalData.conIsCan) {
       console.log(event)
@@ -97,7 +100,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    pageval++;
+    this.getGoods();
   },
 
   /**
@@ -130,7 +134,8 @@ Page({
       url: app.globalData.hostUrl + "app/get_product",
       data: {
         category: that.data.currentId,
-        searchtxt:that.data.searchTxt
+        searchtxt:that.data.searchTxt,
+        pageval:pageval
       },
       success: function (res) {
         if (app.globalData.conIsCan) {

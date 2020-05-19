@@ -15,6 +15,7 @@ Page({
     myCar:[],
     picUrl: app.globalData.picUrl,
     myAddress: wx.getStorageSync("myAddress"),
+    banners:[],
     timeGoods:[]
     // section: [{
     //   name: '蔬菜',
@@ -45,8 +46,9 @@ Page({
     if (id) {
       this.setData({
         currentId: id,
-        classGoods:[]
+        //classGoods:[]
       })
+      this.data.classGoods=[];
       this.getGoods();
     }
   },
@@ -60,6 +62,7 @@ Page({
     //this.setData({ slides:res.data })
     // }
     // })
+    this.getBanner();
     app.editTabbar();
   },
 
@@ -210,6 +213,10 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 1) {
+          wx.showToast({
+            title: '成功加入购物车',
+            icon:'none'
+          })
           for(var i=0;i<that.data.classGoods.length;i++){
             if (gnormsId == that.data.classGoods[i].gnormsId){
               if(that.data.classGoods[i].car==undefined){
@@ -305,4 +312,40 @@ Page({
       url: '../classify/goods_details?gnormsId=' + gnormsId,
     })
   },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  getBanner: function () {
+    var that = this; 
+    wx.request({
+      url: app.globalData.hostUrl + "app/advertisement",
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log("getBanner==", res);
+        }
+        if (res.data.code == 1) {
+          that.setData({
+            banners: res.data.data.list
+          })
+        }
+      }
+    })
+  },
+  onPageScroll: function (e) {
+        let query  =  wx.createSelectorQuery();
+        query.select('#nav').boundingClientRect((rect)  => {
+              let top  =  rect.top;
+              console.log(top);
+              if (top <= 0) {
+                    this.setData({
+                          fixedNav: true
+                    })
+              } else {
+                    this.setData({
+                          fixedNav:  false
+                          
+                    })
+              }
+        }).exec()
+  }
 })

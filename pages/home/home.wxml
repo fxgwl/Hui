@@ -9,15 +9,15 @@
   </view>
 </navigator>
 <swiper class="slides" indicator-dots='true' indicator-color='#6ab5e1' indicator-active-color='#1074bc' circular="true">
-	<swiper-item>
-		<image src="{{picUrl}}fiult.png" mode="aspectFill"/>
+	<swiper-item wx:for="{{banners}}" wx:key="id">
+		<image src="{{item.adPic}}" mode="aspectFill"/>
 	</swiper-item>
-	<swiper-item>
+	<!-- <swiper-item>
 		<image src="{{picUrl}}goods1.png" mode="aspectFill"/>
 	</swiper-item>
 	<swiper-item>
 		<image src="{{picUrl}}goods2.png" mode="aspectFill"/>
-	</swiper-item>
+	</swiper-item> -->
   <!-- <swiper-item wx:for="{{slides}}" wx:key="id">
     <navigator wx:if="{{item.link}}" url="{{item.link}}">
 		  <image src="{{item.image}}" mode="aspectFill"/>
@@ -45,13 +45,15 @@
 	</view>
 </view>
 <!-- 导航 -->
-<view class="nav_kind">
-  <view class='top_nav'>
+<view class="nav_kind" id="nav" >
+  <view  class="top_nav {{fixedNav?'totop':''}}" >
 		<view class="nav-name {{item.gclassId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.gclassId}}' catchtap='handleTap'>
 			{{item.gclassName}}
 		</view>
   </view>
-  <view class="item_nav"  wx:for="{{classGoods}}" wx:key="id">
+
+  <scroll-view >
+  <view class="item_nav "  wx:for="{{classGoods}}" wx:key="id">
 			<view class="kind_item" bindtap="goGoodDetail" data-id="{{item.gnormsId}}">
 			  <view class="pic"><image src='{{item.harlan_gnorms.goodsPic}}'/></view>
 				<view class="con">
@@ -68,5 +70,32 @@
 				</view>
 			</view>
 	</view>
+
+
+
+
+<view class="item_nav"  wx:for="{{classGoods}}" wx:key="id">
+			<view class="kind_item" bindtap="goGoodDetail" data-id="{{item.gnormsId}}">
+			  <view class="pic"><image src='{{item.harlan_gnorms.goodsPic}}'/></view>
+				<view class="con">
+				  <view class="name"><text>{{item.goodsName}}</text></view>
+					<view class="super"><text>超市价：</text><text>￥{{item.harlan_gnorms.goodsMarketprice}}</text></view>
+					<view class="cheap"><text>批发价：</text><text>￥{{item.harlan_gnorms.goodsMallprice}}</text></view>
+				</view>
+				<view class="add" wx:if="{{!item.car || item.car.gnormsNum==0}}" catchtap="addCar" data-id='{{item.gnormsId}}'></view>
+
+				<view class="add2" wx:else>
+				  <image src="{{picUrl}}jian.png" catchtap="delCar" data-id='{{item.gnormsId}}'/>
+					<text>{{item.car.gnormsNum}}</text>
+					<image src="{{picUrl}}jia.png" catchtap="addCar" data-id='{{item.gnormsId}}'/>
+				</view>
+			</view>
+	</view>
+
+</scroll-view>
+
+
+
+  
 </view>
 
