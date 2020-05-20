@@ -77,6 +77,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(!wx.getStorageSync('openid')){
+      app.onLaunch();
+    }
     this.getClass();//获取商品品类
     this.getTimeGoods();//限时秒杀中的商品
     this.setData({
@@ -332,20 +335,22 @@ Page({
     })
   },
   onPageScroll: function (e) {
-        let query  =  wx.createSelectorQuery();
-        query.select('#nav').boundingClientRect((rect)  => {
-              let top  =  rect.top;
-              console.log(top);
-              if (top <= 0) {
-                    this.setData({
-                          fixedNav: true
-                    })
-              } else {
-                    this.setData({
-                          fixedNav:  false
-                          
-                    })
-              }
-        }).exec()
+    let  query = wx.createSelectorQuery();
+    query.select('#nav').boundingClientRect((rect) => {
+      let  top = rect.top;
+      if (app.globalData.conIsCan) {
+        console.log(top);
+      }
+      if (top <= 0) {
+        this.setData({
+          fixedNav: true
+        })
+      } else {
+        this.setData({
+          fixedNav: false
+
+        })
+      }
+    }).exec()
   }
 })

@@ -22,9 +22,17 @@
   height: 26rpx;
   margin-left: 16rpx;
 }
+.slides{
+  width: 100%;
+  height: 350rpx;
+}
+.slide-image {
+  width: 100%;
+  height: 350rpx;
+}
 .slides image {
 	width: 100%;
-	height: 100%;
+	height: 350rpx;
 }
 .wx-swiper-dots.wx-swiper-dots-horizontal{
   margin-left: 280rpx; 

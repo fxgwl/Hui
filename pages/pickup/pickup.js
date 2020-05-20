@@ -63,12 +63,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   getOrderList: function () {
     var that = this;
     wx.request({

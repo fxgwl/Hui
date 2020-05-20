@@ -107,12 +107,7 @@ Page({
   onReachBottom: function () {
   
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
+ 
   getUserInfo: function (e) {
     if (app.globalData.conIsCan) {
       console.log(e);
@@ -147,6 +142,23 @@ Page({
         wx.setStorageSync("memberId", res.data.data.memberId);
         wx.navigateTo({
           url: '../index/index'
+        })
+      },
+      fail : function(res){
+        wx.showModal({
+          title: '提示',
+          content: '登录失败，请稍后重试',
+          success(res) {
+            if (res.confirm) {
+              wx.navigateBack({
+                delta: 1
+              })
+            } else if (res.cancel) {
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          }
         })
       }
     })
