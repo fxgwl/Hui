@@ -131,9 +131,13 @@ page {
   margin-top: -35rpx;
 }
 .modalDlg image:nth-child(2) {
-  width: 220rpx;
-  height: 220rpx;              
-  margin: 65rpx 0 55rpx 0;
+  width: 270rpx;
+  height: 270rpx;              
+  margin: 30rpx 0 5rpx 0;
+}
+.modalDlg .phone {
+  color: #0d6fb8;
+  margin-top: 25rpx;
 }
 /* 弹出层里面的按钮 */
 .modalDlg .ok {

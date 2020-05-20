@@ -16,7 +16,11 @@ Page({
     myAddress: ''
   },
 
-
+  toTell:function(){
+    wx.makePhoneCall({
+      phoneNumber: '13581528292',
+    })
+  },
 //  在线客服弹窗
   btn: function () {
     this.setData({
@@ -57,9 +61,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
     app.editTabbar();
-    
   },
 
   /**
@@ -78,6 +80,7 @@ Page({
       user: app.globalData.userInfo,
       myAddress: wx.getStorageSync('myAddress')
     });
+    console.log("my.js",that.data.user)
   },
 
   /**

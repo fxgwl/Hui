@@ -7,7 +7,6 @@
       <view class="pickup-number-list">
         <view wx:for="{{item.sporder_code}}" wx:for-item="code">{{code}}</view>
       </view>
-      <view class="pickup-tips-list">注：妥善保管，以防他人冒领</view>
     </view>
   </scroll-view>
 </view>

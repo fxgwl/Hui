@@ -12,7 +12,7 @@ Page({
     userName: '',
     cartsId:'',
     mobile: '',
-    totalValue:0,
+    totalValue:0.00,
     list:[],
     list1:[],
     list2:[],

@@ -35,6 +35,7 @@
   height: 90rpx;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .list_name{
   width: 300rpx;
@@ -45,7 +46,6 @@
 }
 .list_price{
     font-size: 30rpx;
-    margin-top: 15rpx;
     color: #1074bc;
     font-weight: 600;
 }

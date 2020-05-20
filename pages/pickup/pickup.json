@@ -2,8 +2,7 @@
   "usingComponents": {
     "tabbar": "../../tabbar/tabbar"
   },
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#1c4f8c",
   "navigationBarTitleText": "取货",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
