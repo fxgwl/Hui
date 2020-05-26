@@ -41,6 +41,8 @@ Page({
       console.log("order_finish.js>>orderId==", this.data.orderId)
     }
     this.getOrderDetail();
+    console.log(options.query)
+    const eventChannel = this.getOpenerEventChannel()
   },
 
   /**
@@ -137,6 +139,42 @@ Page({
   goHome: function () {
     wx.switchTab({
       url: '../home/home',
+    })
+  },
+  /**
+   * 取消订单，确认收货,用户删除cgval=6
+   * cgval=4,cgval=3;orderid
+   */
+  setOrderState: function (event) {
+    var that = this;
+    var cgval = event.currentTarget.dataset.state;
+    var orderid = event.currentTarget.dataset.id
+    wx.request({
+      url: app.globalData.hostUrl + "app/handle_order",
+      data: {
+        cgval: cgval,
+        iscgpare: "0",
+        orderid: orderid
+      },
+      success: function (res) {
+        if (app.globalData.conIsCan) {
+          console.log("my/my.js>>setOrderState==", res);
+        }
+        if (res.data.code == 1) {
+          wx.showToast({
+            title: '成功',
+          })
+          that.getOrderList();
+        }
+      }
+    })
+  },
+  goData: function(){
+    eventChannel.emit('acceptDataFromOpenedPage', { data: 'test2'});
+    eventChannel.emit('someEvent', { data: 'test2'});
+    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      console.log(data)
     })
   }
 })

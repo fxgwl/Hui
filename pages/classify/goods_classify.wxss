@@ -18,14 +18,18 @@ text{
   height: 68rpx;
   margin: 0 auto;
   margin-top: 40rpx;
-  background-color: #f2f5fa;
-  border-radius: 34rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .search input{
-  width: 100%;
+  width: 76%;
   height: 100%;
   border: none;
   outline: none;
+  background-color: #f2f5fa;
+  border-radius: 34rpx;
   background-image: url(https://hui.lyhuiqiao.com/upload/image/search.png);
   background-repeat: no-repeat;
   background-position: 34rpx center;
@@ -33,6 +37,12 @@ text{
   line-height: 68rpx;
   font-size: 22rpx;
   padding-left: 76rpx;
+}
+.search text {
+  width: 10%;
+  color: #1074bc;
+  font-size: 30rpx;
+  z-index: 1;
 }
 .main{
   width: 100%;

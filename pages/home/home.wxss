@@ -128,14 +128,15 @@
   position: absolute;
   top: 0;
   left: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
 }
 .nav-name{
   display: inline-block;
-  width: 100%;
+  width: 95rpx;
   color: #333;
   font-size: 30rpx;
   font-weight: 600;
-  text-align: center;
 }
 .nav-hover{
   font-size: 32rpx;
@@ -144,7 +145,7 @@
   background: url(https://hui.lyhuiqiao.com/upload/image/bottom.png);
   background-repeat: no-repeat;
   background-size: 22rpx 13rpx;
-  background-position: 125rpx center;
+  background-position: right center;
 }
 .item_nav .kind_item {
   height: 230rpx;

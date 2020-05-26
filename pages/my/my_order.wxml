@@ -37,7 +37,8 @@
           <text catchtap="setOrderState" data-id="{{item.sporderId}}" data-state="3">确认收货</text>
         </view>
         <view class="con3_b2" wx:elif="{{item.sporderStatus==3 || item.sporderStatus==4}}">
-          <text>查看订单</text>
+          <text bindtap="delOrder" data-id="{{item.sporderId}}" data-state="6">删除</text>
+          <text catchtap="goGoodDetail" data-id="{{item.sporderId}}">查看订单</text>
         </view>
       </view>
 		</view>

@@ -92,5 +92,16 @@
   line-height: 170rpx;
   font-size: 28rpx;
   color: #333333;
-  padding-left: 260rpx
+  padding-left: 260rpx;
+}
+.num_people {
+  width: 390rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: url(https://hui.lyhuiqiao.com/upload/image/logo.png) no-repeat;
+  background-position: left center;
+  background-size: 40rpx 40rpx;
+  font-size: 25rpx;
+  padding-left: 50rpx;
+  margin: 20rpx auto 0;
 }

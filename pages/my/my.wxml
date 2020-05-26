@@ -76,8 +76,7 @@
 <view class="modalDlg" wx:if="{{showModal}}">
   <image  src="{{picUrl}}logo.png"/>
   <image show-menu-by-longpress="true" src="{{picUrl}}er.png"/>
-  <text class="text">联系客服二维码</text>
-  <text class="phone" catchtap="toTell">客服电话：13581528292</text>
+  <text class="phone" catchtap="toTell">13581528292</text>
   <image bindtap="ok" class="ok" src="{{picUrl}}close.png"/>
 </view>
 <!-- 我想吃 -->

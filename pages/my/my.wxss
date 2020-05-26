@@ -110,7 +110,7 @@ page {
 /* 弹出层 */
 .modalDlg{
   width: 500rpx;
-  height: 560rpx;
+  height: 520rpx;
   position: fixed;
   top: 150rpx;
   left: 0;
@@ -123,7 +123,7 @@ page {
   align-items: center;
   color: #333;
   font-weight: 600;
-  font-size: 36rpx;
+  font-size: 38rpx;
 }
 .modalDlg image:first-child {
   width: 130rpx;
@@ -131,13 +131,12 @@ page {
   margin-top: -35rpx;
 }
 .modalDlg image:nth-child(2) {
-  width: 270rpx;
-  height: 270rpx;              
+  width: 290rpx;
+  height: 290rpx;              
   margin: 30rpx 0 5rpx 0;
 }
 .modalDlg .phone {
   color: #0d6fb8;
-  margin-top: 25rpx;
 }
 /* 弹出层里面的按钮 */
 .modalDlg .ok {

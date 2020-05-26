@@ -171,6 +171,7 @@ page {
   background-color: #fff;
   border: 2rpx solid #999;
   box-sizing: border-box;
+  margin-left: 16rpx;
 }
 .con3_b2 text:last-child {
   margin: 0 28rpx 0 16rpx;

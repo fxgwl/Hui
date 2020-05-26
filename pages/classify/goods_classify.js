@@ -30,6 +30,7 @@ Page({
       this.getGoods();
     }
   },
+
   // 加入购物车
   
   openCounter: function(){
@@ -38,15 +39,14 @@ Page({
       "num" :1,
     }) 
   },
-  getSearch : function(event){
+  inputData: function (event){
     this.setData({
       searchTxt: event.detail.value
     })
+  },
+  getSearch : function(){
     pageval=1
     this.getGoods();
-    if (app.globalData.conIsCan) {
-      console.log(event)
-    }
   },
 
   /**
@@ -59,6 +59,7 @@ Page({
     this.busPos = {};
     this.busPos['x'] = app.globalData.ww * .7;
     this.busPos['y'] = app.globalData.hh * 1.1;
+    this.getClass();
   },
 
   /**
@@ -72,7 +73,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getClass();
+    
   },
 
   /**
@@ -129,7 +130,7 @@ Page({
       url: app.globalData.hostUrl + "app/get_product",
       data: {
         category: that.data.currentId,
-        searchtxt:that.data.searchTxt,
+        searchtxt: that.data.searchTxt == undefined ? "" : that.data.searchTxt,
         pageval:pageval
       },
       success: function (res) {

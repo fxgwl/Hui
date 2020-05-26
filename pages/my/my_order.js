@@ -229,7 +229,7 @@ Page({
     });
   },
   /**
-   * 取消订单，确认收货
+   * 取消订单，确认收货,用户删除cgval=6
    * cgval=4,cgval=3;orderid
    */
   setOrderState: function (event) {
@@ -254,6 +254,61 @@ Page({
           that.getOrderList();
         }
       }
+    })
+  },
+  // 删除订单
+  delOrder:function(event){
+    var that = this;
+    var orderid = event.currentTarget.dataset.id;
+    var cgval = event.currentTarget.dataset.state;
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除订单',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.hostUrl + "app/handle_order",
+            data: {
+              cgval: cgval,
+              iscgpare: "0",
+              orderid: orderid
+            },
+            success: function (res) {
+              wx.showToast({
+                title: '删除成功',
+                icon: 'none',
+                duration: 1500
+              });
+              that.getOrderList();
+            },
+            fail:function(res){
+
+            }
+          })
+        }else if (res.cancel) {
+
+        }
+      }
+    })
+  },
+  goGoodDetail : function(event){
+    var that = this;
+    var sporderId = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../my/order_details?orderId='+sporderId,
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        acceptDataFromOpenedPage: function (data) {
+          console.log("my_order==",data)
+        },
+        someEvent: function (data) {
+          console.log("my_order==",data)
+        },
+        success: function (res) {
+          // 通过eventChannel向被打开页面传送数据
+          res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+        }
+      },
     })
   }
 })
