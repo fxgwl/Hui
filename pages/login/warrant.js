@@ -107,13 +107,13 @@ Page({
   onReachBottom: function () {
   
   },
- 
+  
   getUserInfo: function (e) {
     if (app.globalData.conIsCan) {
       console.log(e);
     }
     app.globalData.userInfo = e.detail.userInfo
-    wx.setStorageSync('userInfo', e.detail.userInfo)
+    wx.setStorageSync('userInfo', e.detail.userInfo) 
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,

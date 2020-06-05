@@ -50,5 +50,5 @@
     <view><text>￥</text><text>{{order.sporderPrice}}</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
-  <text class="details_d2" bindtap="goHome">首页(忘记买?)</text>
+  <text class="details_d2" bindtap="goHome">忘记买?</text>
 </view>

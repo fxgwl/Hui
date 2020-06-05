@@ -1,6 +1,6 @@
 // pages/cart/order_finish.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
 
   /**
@@ -11,7 +11,7 @@ Page({
     picUrl: app.globalData.picUrl,
     bg: true,
     orderId: "",
-    pickupTime: '',
+    pickupTime: '', 
     goodList: [],
     list1: [],
     list2: [],
@@ -42,7 +42,6 @@ Page({
     }
     this.getOrderDetail();
     console.log(options.query)
-    const eventChannel = this.getOpenerEventChannel()
   },
 
   /**
@@ -164,14 +163,20 @@ Page({
           wx.showToast({
             title: '成功',
           })
-          that.getOrderList();
+          that.goData();
         }
+      },
+      fail : function(res){
+        wx.showToast({
+          title: '操作失败，请稍后重试',
+        })
       }
     })
   },
   goData: function(){
-    eventChannel.emit('acceptDataFromOpenedPage', { data: 'test2'});
-    eventChannel.emit('someEvent', { data: 'test2'});
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.emit('acceptDataFromOpenedPage', {data: '1'});
+    //eventChannel.emit('someEvent', { data: 'test2'});
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       console.log(data)

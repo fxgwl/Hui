@@ -68,7 +68,7 @@ Page({
       if (addressId == that.data.addressList[i].address_id){
         wx.setStorageSync("myAddress", that.data.addressList[i])
       }
-    }
+    } 
     wx.switchTab({
       url: '/pages/home/home',
     })

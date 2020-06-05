@@ -1,5 +1,6 @@
 // pages/cart/submit_order.js
 //获取应用实例
+var util = require('../../utils/util')
 const app = getApp()
 Page({
 
@@ -12,23 +13,26 @@ Page({
     userName: '',
     cartsId:'',
     mobile: '',
+    pickupTime:'',
     totalValue:0.00,
     list:[],
     list1:[],
     list2:[],
+    user:{},
+    firstOrder:false,
     myAddress:wx.getStorageSync("myAddress")
   },
-  userNameInput: function (e) {
-    this.setData({
-      userName: e.detail.value
-    })
-  },
+   userNameInput: function (e) {
+     this.setData({
+       userName: e.detail.value
+     })
+   },
 
-  mobileInput: function (e) {
-    this.setData({
-      mobile: e.detail.value
-    })
-  },
+   mobileInput: function (e) {
+     this.setData({
+       mobile: e.detail.value
+     })
+   },
   change: function () {
     if(this.data.bg){
       this.setData({
@@ -42,12 +46,15 @@ Page({
       })
     }
   }, 
-  goNext: function () {
+  goNext: function (e) {
     var that = this;
-    var userName = this.data.userName;
-    var mobile = this.data.mobile;
+    let {firstOrder} = that.data;
+    var userName = that.data.userName;
+    var mobile = that.data.mobile;
     var phonetel = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     var name = /^[u4E00-u9FA5]+$/;
+    if(!firstOrder) {
+      that.setData({firstOrder:true});
     if (userName == '') {
       wx.showToast({
         title: '请输入用户名',
@@ -94,6 +101,13 @@ Page({
     for (var i = 0; i < 6; i++) {
       code += Math.floor(Math.random() * 10);
     }
+    that.data.user.tel=mobile;
+    that.data.user.name=userName;
+    that.setData({
+      user:that.data.user
+    })
+    wx.setStorageSync('userInfo', that.data.user)
+   
     wx.request({
       url: app.globalData.hostUrl + "app/submit_product_order",
       data: {
@@ -125,18 +139,32 @@ Page({
         }
       }
     })
+    // that.setData({firstOrder:false})
+    }
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+    var that = this;
+    that.setData({
       cartsId:options.cartsId,
+      user:wx.getStorageSync('userInfo')
     })
     if (app.globalData.conIsCan){
-      console.log("cartsId==",this.data.cartsId)
+      console.log("cartsId==",that.data.cartsId)
     }
-    this.getMyCart();
+    that.getMyCart();
+    that.getPickupTime();
+    if(that.data.user.name==undefined){
+    }else{
+      that.setData({
+        mobile: that.data.user.tel,
+        userName:that.data.user.name
+      })
+    }
+    
   },
 
   /**
@@ -150,7 +178,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({firstOrder:false})
   },
 
   /**
@@ -180,7 +208,20 @@ Page({
   onReachBottom: function () {
 
   },
-
+  getPickupTime : function(){
+    var that = this;
+    var timestamp = Date.parse(new Date());
+    var time1 = new Date(timestamp);
+    if(time1.getHours()>=11){
+      that.setData({
+        pickupTime: (time1.getMonth() + 1) + "月" + (time1.getDate()+1)+"日",
+      })
+    }else{
+      that.setData({
+        pickupTime: (time1.getMonth() + 1) + "月" + time1.getDate() + "日",
+      })
+    }
+  },
   
   getMyCart: function () {
     var that = this;

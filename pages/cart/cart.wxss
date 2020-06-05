@@ -1,4 +1,6 @@
-
+.pages {
+  padding-bottom: 180rpx;
+}
 .cartHeader{
   width: 690rpx;
   margin: 0 auto;

@@ -31,7 +31,9 @@
         </view>
         <view class="con3_b2" wx:if="{{item.sporderStatus==0}}">
           <text class="apply" catchtap="setOrderState" data-id="{{item.sporderId}}" data-state="4">取消订单</text>
-          <text bindtap="gotoPay" data-id="{{item.sporderId}}">去支付</text></view>
+          <text wx:if="{{showPay}}">去支付</text>
+          <text wx:else bindtap="gotoPay" data-id="{{item.sporderId}}">去支付</text>
+        </view>
         <view class="con3_b2" wx:elif="{{item.sporderStatus==1}}">
           <!-- <navigator url="../my/apply_refund"><text class="apply">申请退款</text></navigator> -->
           <text catchtap="setOrderState" data-id="{{item.sporderId}}" data-state="3">确认收货</text>

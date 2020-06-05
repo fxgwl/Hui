@@ -1,19 +1,20 @@
 <!--pages/cart/submit_order.wxml-->
+
 <view class="details_a">
   <view class="local flex1"><text>取货点：</text><text>{{myAddress.address_detail}}</text></view>
   <view class="time flex1">
     <text>取货时间：</text>
-    <view><text>4月10日</text><text class="time1">下午5点</text></view>
+    <view><text>{{pickupTime}}</text><text class="time1">下午5点</text></view>
   </view>
 </view>
-<view class="details_a">
+<view class=" details_a" >
   <view class="local flex1">
     <text>取货人：</text>
-    <input type="text" value="" bindinput ="userNameInput" maxlength="12" placeholder="请输入取货人姓名" ></input>
+    <input type="text"  value="{{user.name}}" bindinput ="userNameInput" maxlength="12" placeholder="请输入取货人姓名" ></input>
   </view>
   <view class="time flex1">
     <text>联系电话：</text>
-    <input type="number" value="" bindinput ="mobileInput" maxlength="11" placeholder="请输入取货人电话"></input>
+    <input type="number"  value="{{user.tel}}" bindinput ="mobileInput" maxlength="11" placeholder="请输入取货人电话"></input>
   </view>
 </view>
 <view class="details_b">
@@ -45,5 +46,6 @@
     <view><text>￥</text><text>{{totalValue}}</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
-  <text class="details_d2" bindtap="goNext">取回家</text>
+  <text class="details_d2" wx:if="{{firstOrder}}"  >取回家</text>
+  <text class="details_d2" wx:else bindtap="goNext" >取回家</text>
 </view>

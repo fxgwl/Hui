@@ -25,6 +25,7 @@ Page({
     app.editTabbar();
     that.setData({
       hostUrl:app.globalData.hostUrl+"upload/",
+      // selectAllStatus : true
     })
   },
   onShow() {
@@ -34,7 +35,9 @@ Page({
       duration: 1000
     })
     this.getMyCart();
-    
+    this.setData({
+      selectAllStatus:true
+    })
   },
   /**
    * 当前商品选中事件
@@ -45,8 +48,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     // 获取到商品列表数据
     var list = that.data.list;
-    // 默认全选
-    that.data.selectAllStatus = true;
+    // 默认全选 
+     that.data.selectAllStatus = true;
     // 循环数组数据，判断----选中/未选中[selected]
     list[index].selected = !list[index].selected;
     // 如果数组数据全部为selected[true],全选
@@ -57,10 +60,10 @@ Page({
       }
     }
     // 重新渲染数据
-    that.setData({
-      list: list,
-      selectAllStatus: that.data.selectAllStatus
-    })
+     that.setData({
+       list: list,
+       selectAllStatus: that.data.selectAllStatus
+     })
     // 调用计算金额方法
     that.count_price();
   },

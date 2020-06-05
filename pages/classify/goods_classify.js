@@ -16,7 +16,8 @@ Page({
     classGoods: [],
     section: [],
     myCar: [],
-    searchTxt:''
+    searchTxt:'', 
+    windowHeight:"",    
   },
   //点击每个导航的点击事件
   handleTap: function (e) {
@@ -45,8 +46,21 @@ Page({
     })
   },
   getSearch : function(){
-    pageval=1
-    this.getGoods();
+    var txt = this.data.searchTxt
+    if (txt == '') {
+      wx.showToast({
+        title: '请输入商品名称',
+        icon: 'none',
+        duration: 1500
+      })
+    }else {
+      pageval=1
+      this.setData({
+        currentId:""
+      })
+      this.getGoods();
+    }
+   
   },
 
   /**
@@ -60,6 +74,15 @@ Page({
     this.busPos['x'] = app.globalData.ww * .7;
     this.busPos['y'] = app.globalData.hh * 1.1;
     this.getClass();
+    wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          windowHeight : res.windowHeight
+        })
+      }
+    })
+
+   
   },
 
   /**
@@ -73,7 +96,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    that.getGoods();
   },
 
   /**
@@ -126,6 +150,8 @@ Page({
   },
   getGoods: function (id) {
     var that = this;
+    let data = { page: that.data.page, size: that.data.size};
+    var classGoodsTem = this.data.classGoods
     wx.request({
       url: app.globalData.hostUrl + "app/get_product",
       data: {
@@ -138,9 +164,9 @@ Page({
           console.log(res);
         }
         if (res.data.code == 1) {
-          that.setData({
-            classGoods: res.data.data.list
-          })
+            that.setData({
+              classGoods: res.data.data.list
+            })
           if(res.data.data.list.length==0){
             wx.showToast({
               title: '暂无商品',
@@ -149,9 +175,17 @@ Page({
           }
         }
         that.getCar();
+      },
+      complete:function(){
+        that.setData({
+          searchTxt:""
+        })
       }
     })
+  
+
   },
+  
   getCar: function () {
     var that = this;
     wx.request({

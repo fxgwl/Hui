@@ -95,13 +95,21 @@
   padding-left: 260rpx;
 }
 .num_people {
-  width: 390rpx;
   height: 40rpx;
   line-height: 40rpx;
-  background: url(https://hui.lyhuiqiao.com/upload/image/logo.png) no-repeat;
+  text-align: center;
+  /* background: url(https://hui.lyhuiqiao.com/upload/image/logo.png) no-repeat;
   background-position: left center;
-  background-size: 40rpx 40rpx;
-  font-size: 25rpx;
-  padding-left: 50rpx;
-  margin: 20rpx auto 0;
+  background-size: 40rpx 40rpx; */
+  font-size: 30rpx;
+  margin: 20rpx 0 0 40rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.num_people image {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 120rpx;
+  top: 0;
 }

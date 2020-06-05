@@ -27,9 +27,10 @@
     <!-- 申请开通结束 -->
     
     <view class="num_people">
-      <text>申请人数到20人，已申请</text>
-      <text style="color:#1074bc">10</text>
-      <text>人！</text>
+      <image src="https://hui.lyhuiqiao.com/upload/image/logo.png"></image>
+      <text>小区开通条件：</text>
+      <text style="color:#1074bc">20</text>
+      <text>人以上！</text>
     </view>
   </scroll-view>
 </view>

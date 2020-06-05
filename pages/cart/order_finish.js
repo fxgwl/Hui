@@ -10,7 +10,7 @@ Page({
     picUrl: app.globalData.picUrl,
     bg: true,
     orderId:"",
-    pickupTime:'',
+    pickupTime:'', 
     goodList:[],
     list1:[],
     list2:[],

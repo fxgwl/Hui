@@ -64,6 +64,7 @@ Page({
     // })
     this.getBanner();
     app.editTabbar();
+    this.getClass();//获取商品品类
   },
 
   /**
@@ -77,10 +78,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    that.getGoods();
     if(!wx.getStorageSync('openid')){
       app.onLaunch();
     }
-    this.getClass();//获取商品品类
+    
     this.getTimeGoods();//限时秒杀中的商品
     this.setData({
       myAddress:wx.getStorageSync("myAddress")
@@ -291,6 +294,12 @@ Page({
         if (res.data.code == 1) {
           that.setData({
             timeGoods: res.data.data.list
+          })
+          for(var i=0;i<that.data.timeGoods.length;i++){
+            that.data.timeGoods[i].harlan_gnorms.goodsPic = that.data.timeGoods[i].harlan_gnorms.goodsPicsList[0];
+          }
+          that.setData({
+            timeGoods: that.data.timeGoods
           })
         }
       }

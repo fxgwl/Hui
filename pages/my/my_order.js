@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showPay:false,
     picUrl: app.globalData.picUrl,
     currentId: '',
     section: [{
@@ -105,7 +106,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({showPay:false})
   },
 
   /**
@@ -159,6 +160,9 @@ Page({
               orderList: res.data.data.list
             })
           }else{
+            that.setData({
+              orderList: []
+            })
             wx.showToast({
               title: '你还没有订单',
               icon:'none'
@@ -174,7 +178,10 @@ Page({
   /*获取微信sign*/
   gotoPay: function (event) {
     var that = this;
+    let {showPay} = that.data;
     var orderId = event.currentTarget.dataset.id;
+    if(!showPay) {
+      that.setData({showPay:true});
     wx.request({
       url: app.globalData.hostUrl + "app/order_wechat_sign",
       data: {
@@ -208,6 +215,7 @@ Page({
         }
       }
     })
+    }
   },
   // 去下一页
   goNextPage: function (NoIsYes, orderId) {
@@ -300,9 +308,9 @@ Page({
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         acceptDataFromOpenedPage: function (data) {
           console.log("my_order==",data)
-        },
-        someEvent: function (data) {
-          console.log("my_order==",data)
+          if(data.data==1){
+            that.getOrderList();
+          }
         },
         success: function (res) {
           // 通过eventChannel向被打开页面传送数据

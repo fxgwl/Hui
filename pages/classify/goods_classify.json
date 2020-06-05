@@ -7,5 +7,5 @@
   "navigationBarTitleText": "分类",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false
 }

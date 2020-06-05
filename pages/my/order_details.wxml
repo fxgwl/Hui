@@ -38,15 +38,15 @@
     <image src="{{picUrl}}bottom.png"/>
   </view>
 </view>
-<view class="details_c" wx:if="{{order.sporderStatus!=0}}">
-  <image src="{{picUrl}}num.png"/>
+<view class="details_c" wx:if="{{order.sporderStatus == 1 || order.sporderStatus == 3}}">
+  <image src="{{picUrl}}num.png"/> 
   <view class="flex1">
     <text wx:for="{{order.sporder_code}}">{{item}}</text>
   </view>
 </view>
 <view class="details_d flex1">
   <view class="details_d1 flex1">
-    <view><text>￥</text><text>{{order.sporderPrice}}</text></view>
+    <view bindtap="goData"><text>￥</text><text>{{order.sporderPrice}}</text></view>
     <!-- <view><text>已优惠￥</text><text>34</text></view> -->
   </view>
   <text class="details_d2" wx:if="{{order.sporderStatus == 1}}" catchtap="setOrderState" data-id="{{order.sporderId}}" data-state="3">确认收货</text>
