@@ -6,11 +6,11 @@
 /*轮播图*/
 .swiper{
   width: 100%;
-  height: 540rpx;
+  height: 541rpx;
 }
 .slide-image {
   width: 100%;
-  height: 540rpx;
+  height: 541rpx;
 }
 .content{
   width: 96%;

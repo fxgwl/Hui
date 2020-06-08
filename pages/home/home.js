@@ -295,12 +295,12 @@ Page({
           that.setData({
             timeGoods: res.data.data.list
           })
-          for(var i=0;i<that.data.timeGoods.length;i++){
-            that.data.timeGoods[i].harlan_gnorms.goodsPic = that.data.timeGoods[i].harlan_gnorms.goodsPicsList[0];
-          }
-          that.setData({
-            timeGoods: that.data.timeGoods
-          })
+          // for(var i=0;i<that.data.timeGoods.length;i++){
+          //   that.data.timeGoods[i].harlan_gnorms.goodsPic = that.data.timeGoods[i].harlan_gnorms.goodsPicsList[0];
+          // }
+          // that.setData({
+          //   timeGoods: that.data.timeGoods
+          // })
         }
       }
     })
