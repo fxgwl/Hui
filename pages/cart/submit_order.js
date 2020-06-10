@@ -48,13 +48,11 @@ Page({
   }, 
   goNext: function (e) {
     var that = this;
-    let {firstOrder} = that.data;
     var userName = that.data.userName;
     var mobile = that.data.mobile;
     var phonetel = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     var name = /^[u4E00-u9FA5]+$/;
-    if(!firstOrder) {
-      that.setData({firstOrder:true});
+    
     if (userName == '') {
       wx.showToast({
         title: '请输入用户名',
@@ -107,7 +105,10 @@ Page({
       user:that.data.user
     })
     wx.setStorageSync('userInfo', that.data.user)
-   
+    if(!that.data.firstOrder) {
+      that.setData({
+        firstOrder:true
+      });
     wx.request({
       url: app.globalData.hostUrl + "app/submit_product_order",
       data: {
@@ -137,9 +138,11 @@ Page({
             duration: 1500
           })
         }
+      },
+      complete:function(){
+        that.setData({firstOrder:false})
       }
     })
-    // that.setData({firstOrder:false})
     }
   },
   
@@ -150,7 +153,8 @@ Page({
     var that = this;
     that.setData({
       cartsId:options.cartsId,
-      user:wx.getStorageSync('userInfo')
+      user:wx.getStorageSync('userInfo'),
+      myAddress:wx.getStorageSync("myAddress")
     })
     if (app.globalData.conIsCan){
       console.log("cartsId==",that.data.cartsId)

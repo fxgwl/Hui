@@ -36,7 +36,7 @@
   line-height: 26rpx;
 }
 .wa_btn{
-  margin: 130rpx auto 0 auto;  
+  margin: 130rpx auto 40rpx auto;  
   width: 600rpx;
   height: 90rpx;
   line-height: 90rpx;
@@ -44,6 +44,18 @@
   border-radius: 10rpx;
   font-size: 30rpx;
   color: #ffffff;
+  text-align: center;
+  font-family: '苹方';
+}
+.close_btn {
+  width: 600rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #fff;
+  border: 1rpx solid #1074bc;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: #1074bc;
   text-align: center;
   font-family: '苹方';
 }

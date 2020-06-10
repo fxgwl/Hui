@@ -107,7 +107,11 @@ Page({
   onReachBottom: function () {
   
   },
-  
+  close:function() {
+    wx.navigateBack({
+      complete: (res) => {},
+    })
+  },
   getUserInfo: function (e) {
     if (app.globalData.conIsCan) {
       console.log(e);
