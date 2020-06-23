@@ -247,6 +247,11 @@ Page({
           if (app.globalData.conIsCan) {
             console.log("加入成功");
           }
+        }else if (res.data.code == 400){
+          wx.showToast({
+            title: '此商品已售罄',
+            icon:'none'
+          })
         }
       }
     })

@@ -20,7 +20,7 @@ Page({
     list2:[],
     user:{},
     firstOrder:false,
-    myAddress:wx.getStorageSync("myAddress")
+    myAddress:{}
   },
    userNameInput: function (e) {
      this.setData({
@@ -131,6 +131,12 @@ Page({
           // wx.navigateTo({
           //   url: 'order_finish',
           // })
+        }else if(res.data.code==400){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1500
+          })
         }else{
           wx.showToast({
             title: '订单提交有误，请稍后再试',

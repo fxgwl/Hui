@@ -6,7 +6,7 @@
     <!-- 小区列表 -->
     <view class="station-list" bindtap="gohome" data-id="{{item.address_id}}" wx:for="{{addressList}}" wx:key="id">
       <view class="station-left">
-        <image src="{{picUrl}}local2.png"></image>
+        <image src="{{item.address_pic}}"></image>
       </view>
       <view class="station-right">
         <view class="station-date">

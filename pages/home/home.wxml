@@ -1,8 +1,12 @@
 <!--pages/home/home.wxml-->
 <tabbar tabbar="{{tabbar}}"></tabbar>
+<view class="tips_box" wx:if="{{displayTips}}">
+	<view class="point"></view>
+	点击“<image src='../../image/wx_img.png' />”添加到我的小程序，微信首页下拉即可快速访问店铺
+</view>
 <navigator url="/pages/index/select_station">
   <view class="localbox">
-    <image class="local_img1" src="{{picUrl}}local1.png" mode="aspectFill"/> 
+    <image class="local_img1" src="{{myAddress.address_pic}}" mode="aspectFill"/> 
     <text wx:if="{{myAddress}}">{{myAddress.address_detail}}</text>
     <text wx:else>您还没有选择小区</text>
     <image class="local_img2" src="{{picUrl}}right.png" mode="aspectFill"/>

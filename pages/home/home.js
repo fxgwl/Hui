@@ -16,6 +16,7 @@ Page({
     picUrl: app.globalData.picUrl,
     myAddress: wx.getStorageSync("myAddress"),
     banners:[],
+    displayTips: true,
     timeGoods:[]
     // section: [{
     //   name: '蔬菜',
@@ -56,6 +57,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     //wx.request({
     //url: 'https://locally.xxx.com/slides',
     //success: res => {
@@ -65,13 +67,19 @@ Page({
     this.getBanner();
     app.editTabbar();
     this.getClass();//获取商品品类
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this;
+    setTimeout(function(){
+      that.setData({
+        displayTips: false
+      })
+    },6000)
   },
 
   /**
@@ -240,6 +248,11 @@ Page({
           if(app.globalData.conIsCan){
             console.log("加入成功");
           }
+        }else if (res.data.code == 400){
+          wx.showToast({
+            title: '此商品已售罄',
+            icon:'none'
+          })
         }
       }
     })
